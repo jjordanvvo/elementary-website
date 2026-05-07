@@ -5,28 +5,79 @@
 
 'use strict';
 
-/* ── Navbar: Scroll + Mobile Menu ─────────────────────────── */
+/* ── Page Load Overlay ────────────────────────────────────── */
 (function () {
-  const navbar    = document.getElementById('navbar');
-  const hamburger = document.getElementById('hamburger');
+  const overlay = document.getElementById('page-overlay');
+  if (!overlay) return;
+  window.addEventListener('load', function () {
+    overlay.classList.add('done');
+  });
+}());
+
+/* ── Seasonal Banner ──────────────────────────────────────── */
+(function () {
+  const bar = document.querySelector('.season-bar');
+  if (bar) {
+    const closeBtn = bar.querySelector('.season-bar-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        bar.style.display = 'none';
+        document.body.classList.remove('has-season-bar');
+      });
+    }
+    bar.addEventListener('click', function (e) {
+      if (e.target === closeBtn || closeBtn && closeBtn.contains(e.target)) return;
+    });
+  }
+
+  const el = document.getElementById('seasonal-msg');
+  if (!el) return;
+  const month = new Date().getMonth(); // 0-indexed
+  const messages = {
+    0:  'Spring semester is underway — welcome back!',
+    1:  'Spring enrollment is open for new students.',
+    2:  'Spring Break is just around the corner!',
+    3:  'Spring semester in full swing — have you checked the calendar?',
+    4:  'Graduation season is here — congratulations, seniors!',
+    5:  'Summer break starts soon — enrollment for fall is open.',
+    6:  'Fall enrollment closes soon — apply before it\'s too late.',
+    7:  'Fall semester begins this month — get ready!',
+    8:  'Fall semester is underway — welcome to a new year!',
+    9:  'Midterm season — stay on track with our academic calendar.',
+    10: 'Thanksgiving Break is coming — review the holiday schedule.',
+    11: 'Winter Break is almost here — enjoy time with family.',
+  };
+  el.textContent = messages[month] || 'Welcome to Heritage Christian Academy!';
+}());
+
+/* ── Navbar: Scroll + Hero Mode + Split Nav ───────────────── */
+(function () {
+  const navbar     = document.getElementById('navbar');
+  const hamburger  = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileClose = document.getElementById('mobile-close');
 
-  // Scroll behavior
-  let lastScroll = 0;
-  window.addEventListener('scroll', function () {
+  function updateNav() {
+    if (!navbar) return;
     const y = window.scrollY;
-    if (navbar) {
-      if (y > 60) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
+    if (y > 60) {
+      navbar.classList.add('scrolled');
+      navbar.classList.remove('hero-mode');
+    } else {
+      navbar.classList.remove('scrolled');
+      if (navbar.dataset.heroMode === 'true') {
+        navbar.classList.add('hero-mode');
       }
     }
-    lastScroll = y;
-  }, { passive: true });
+  }
 
-  // Mobile menu toggle
+  if (navbar && navbar.dataset.heroMode === 'true') {
+    navbar.classList.add('hero-mode');
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
   function openMenu() {
     if (!mobileMenu || !hamburger) return;
     mobileMenu.classList.add('open');
@@ -42,33 +93,18 @@
     hamburger.setAttribute('aria-expanded', 'false');
   }
 
-  if (hamburger) {
-    hamburger.addEventListener('click', function () {
-      mobileMenu && mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
-    });
-  }
+  if (hamburger) hamburger.addEventListener('click', function () {
+    mobileMenu && mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+  });
   if (mobileClose) mobileClose.addEventListener('click', closeMenu);
+  if (mobileMenu) mobileMenu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
 
-  // Close mobile menu on link click
-  if (mobileMenu) {
-    mobileMenu.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', closeMenu);
-    });
-  }
-
-  // Close on outside click
   document.addEventListener('click', function (e) {
     if (mobileMenu && mobileMenu.classList.contains('open')) {
-      if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
-        closeMenu();
-      }
+      if (!mobileMenu.contains(e.target) && hamburger && !hamburger.contains(e.target)) closeMenu();
     }
   });
-
-  // Escape key
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeMenu();
-  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
 }());
 
 /* ── Active Nav Link ──────────────────────────────────────── */
@@ -86,7 +122,6 @@
 (function () {
   const targets = document.querySelectorAll('.fade-up');
   if (!targets.length) return;
-
   const observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
@@ -95,23 +130,157 @@
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
   targets.forEach(function (el) { observer.observe(el); });
+}());
+
+/* ── Scripture Banner Reveal ─────────────────────────────── */
+(function () {
+  const banner = document.querySelector('.scripture-banner');
+  if (!banner) return;
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        banner.classList.add('visible');
+        observer.unobserve(banner);
+      }
+    });
+  }, { threshold: 0.3 });
+  observer.observe(banner);
+}());
+
+/* ── Stats Counter ────────────────────────────────────────── */
+(function () {
+  const stats = document.querySelectorAll('.stat-number[data-target]');
+  if (!stats.length) return;
+
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function animateStat(el) {
+    const target   = parseFloat(el.dataset.target);
+    const suffix   = el.dataset.suffix || '';
+    const duration = 2000;
+    const start    = performance.now();
+
+    function step(now) {
+      const elapsed  = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const value    = target * easeOut(progress);
+      el.textContent = (Number.isInteger(target) ? Math.round(value) : value.toFixed(1)) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        animateStat(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  stats.forEach(function (el) { observer.observe(el); });
+}());
+
+/* ── Testimonial Rotator ──────────────────────────────────── */
+(function () {
+  const slides = document.querySelectorAll('.testimonial-slide');
+  const dotsWrap = document.getElementById('testimonial-dots');
+  if (!slides.length || !dotsWrap) return;
+
+  let current = 0;
+  let timer;
+
+  const dots = Array.from(slides).map(function (_, i) {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+    d.addEventListener('click', function () { goTo(i); });
+    dotsWrap.appendChild(d);
+    return d;
+  });
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    // no-op — kept for symmetry
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(function () { goTo(current + 1); }, 6000);
+  }
+
+  slides[0].classList.add('active');
+  resetTimer();
+
+  const prevBtn = document.getElementById('testimonial-prev');
+  const nextBtn = document.getElementById('testimonial-next');
+  if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
+}());
+
+/* ── Highlights Horizontal Scroll Arrows ─────────────────── */
+(function () {
+  const track = document.getElementById('highlights-track');
+  const prevBtn = document.getElementById('hl-prev');
+  const nextBtn = document.getElementById('hl-next');
+  if (!track || !prevBtn || !nextBtn) return;
+
+  const STEP = 360;
+
+  prevBtn.addEventListener('click', function () {
+    track.scrollBy({ left: -STEP, behavior: 'smooth' });
+  });
+  nextBtn.addEventListener('click', function () {
+    track.scrollBy({ left: STEP, behavior: 'smooth' });
+  });
+
+  function updateArrows() {
+    prevBtn.disabled = track.scrollLeft < 10;
+    nextBtn.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 10;
+  }
+
+  track.addEventListener('scroll', updateArrows, { passive: true });
+  updateArrows();
+}());
+
+/* ── Floating Apply Bar (Mobile) ──────────────────────────── */
+(function () {
+  const bar = document.getElementById('float-apply');
+  if (!bar) return;
+
+  const hero = document.querySelector('.hero');
+  if (!hero) { bar.classList.add('visible'); return; }
+
+  function updateBar() {
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    if (heroBottom < 0) {
+      bar.classList.add('visible');
+    } else {
+      bar.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', updateBar, { passive: true });
+  updateBar();
 }());
 
 /* ── FAQ Accordion ────────────────────────────────────────── */
 (function () {
   const items = document.querySelectorAll('.faq-item');
   if (!items.length) return;
-
   items.forEach(function (item) {
     const question = item.querySelector('.faq-question');
     if (!question) return;
     question.addEventListener('click', function () {
       const isOpen = item.classList.contains('open');
-      // Close all others
       items.forEach(function (other) { other.classList.remove('open'); });
-      // Toggle this one
       if (!isOpen) item.classList.add('open');
     });
   });
@@ -145,18 +314,18 @@
   };
 
   let currentYear  = new Date().getFullYear();
-  let currentMonth = new Date().getMonth(); // 0-indexed
+  let currentMonth = new Date().getMonth();
 
-  const gridEl        = document.getElementById('calendar-grid');
-  const monthTitle    = document.getElementById('cal-month-title');
-  const prevBtn       = document.getElementById('cal-prev');
-  const nextBtn       = document.getElementById('cal-next');
-  const upcomingEl    = document.getElementById('upcoming-list');
-  const eventPopup    = document.getElementById('event-popup');
-  const popupClose    = document.getElementById('popup-close');
-  const popupDate     = document.getElementById('popup-date');
-  const popupTitle    = document.getElementById('popup-title');
-  const popupDesc     = document.getElementById('popup-desc');
+  const gridEl      = document.getElementById('calendar-grid');
+  const monthTitle  = document.getElementById('cal-month-title');
+  const prevBtn     = document.getElementById('cal-prev');
+  const nextBtn     = document.getElementById('cal-next');
+  const upcomingEl  = document.getElementById('upcoming-list');
+  const eventPopup  = document.getElementById('event-popup');
+  const popupClose  = document.getElementById('popup-close');
+  const popupDate   = document.getElementById('popup-date');
+  const popupTitle  = document.getElementById('popup-title');
+  const popupDesc   = document.getElementById('popup-desc');
 
   const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const DAY_NAMES   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -166,56 +335,40 @@
 
   function renderCalendar(year, month) {
     if (!gridEl) return;
-    const today     = new Date();
-    const firstDay  = new Date(year, month, 1).getDay();
+    const today      = new Date();
+    const firstDay   = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
     if (monthTitle) monthTitle.textContent = MONTH_NAMES[month] + ' ' + year;
 
     let html = '';
-    // Day headers
-    DAY_NAMES.forEach(function (d) {
-      html += '<div class="cal-day-header">' + d + '</div>';
-    });
+    DAY_NAMES.forEach(function (d) { html += '<div class="cal-day-header">' + d + '</div>'; });
+    for (let i = 0; i < firstDay; i++) { html += '<div class="cal-day empty"></div>'; }
 
-    // Empty cells before first day
-    for (let i = 0; i < firstDay; i++) {
-      html += '<div class="cal-day empty"></div>';
-    }
-
-    // Days
     for (let d = 1; d <= daysInMonth; d++) {
       const key   = dateKey(year, month, d);
       const event = EVENTS[key];
       const isToday = (d === today.getDate() && month === today.getMonth() && year === today.getFullYear());
       const classes = ['cal-day'];
       if (isToday) classes.push('today');
-      if (event) classes.push('has-event');
+      if (event) classes.push('has-event', event.type);
 
       html += '<div class="' + classes.join(' ') + '"' +
-        (event ? ' data-date="' + key + '" data-event="' + encodeURIComponent(JSON.stringify(event)) + '"' : '') +
-        '>';
+        (event ? ' data-date="' + key + '"' : '') + '>';
       html += '<div class="cal-day-num">' + d + '</div>';
-      if (event) {
-        html += '<div class="cal-events"><div class="cal-event-dot ' + event.type + '">' + event.text + '</div></div>';
-      }
+      if (event) html += '<div class="cal-event-dot ' + event.type + '"></div>';
       html += '</div>';
     }
 
     gridEl.innerHTML = html;
 
-    // Click handlers
     gridEl.querySelectorAll('.cal-day.has-event').forEach(function (cell) {
       cell.addEventListener('click', function () {
-        const dateStr = cell.dataset.date;
-        const ev = EVENTS[dateStr];
+        const ev = EVENTS[cell.dataset.date];
         if (!ev || !eventPopup) return;
-
-        const parts = dateStr.split('-');
-        const d = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
-        const formattedDate = d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-
-        if (popupDate)  popupDate.textContent  = formattedDate;
+        const parts = cell.dataset.date.split('-');
+        const dt = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+        if (popupDate)  popupDate.textContent  = dt.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
         if (popupTitle) popupTitle.textContent = ev.text;
         if (popupDesc)  popupDesc.textContent  = ev.desc;
         eventPopup.classList.add('open');
@@ -226,9 +379,7 @@
 
   function renderUpcoming() {
     if (!upcomingEl) return;
-    const today = new Date();
-    today.setHours(0,0,0,0);
-
+    const today = new Date(); today.setHours(0,0,0,0);
     const upcoming = Object.entries(EVENTS)
       .filter(function ([key]) { return new Date(key) >= today; })
       .sort(function ([a],[b]) { return new Date(a) - new Date(b); })
@@ -238,49 +389,34 @@
       upcomingEl.innerHTML = '<div style="padding:20px;text-align:center;color:var(--gray);font-size:.875rem">No upcoming events.</div>';
       return;
     }
-
     upcomingEl.innerHTML = upcoming.map(function ([dateStr, ev]) {
       const parts = dateStr.split('-');
       const d = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
       const label = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-      return '<div class="upcoming-item">' +
+      return '<div class="upcoming-item upcoming-item--' + ev.type + '">' +
         '<div class="upcoming-date">' + label + '</div>' +
-        '<div class="upcoming-title">' + ev.text + '</div>' +
+        '<div class="upcoming-event-title">' + ev.text + '</div>' +
         '</div>';
     }).join('');
   }
 
-  // Navigation
-  if (prevBtn) {
-    prevBtn.addEventListener('click', function () {
-      currentMonth--;
-      if (currentMonth < 0) { currentMonth = 11; currentYear--; }
-      renderCalendar(currentYear, currentMonth);
-    });
-  }
-  if (nextBtn) {
-    nextBtn.addEventListener('click', function () {
-      currentMonth++;
-      if (currentMonth > 11) { currentMonth = 0; currentYear++; }
-      renderCalendar(currentYear, currentMonth);
-    });
-  }
+  if (prevBtn) prevBtn.addEventListener('click', function () {
+    currentMonth--;
+    if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+    renderCalendar(currentYear, currentMonth);
+  });
+  if (nextBtn) nextBtn.addEventListener('click', function () {
+    currentMonth++;
+    if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+    renderCalendar(currentYear, currentMonth);
+  });
 
-  // Event popup close
-  if (popupClose) {
-    popupClose.addEventListener('click', function () {
-      eventPopup.classList.remove('open');
-      document.body.style.overflow = '';
-    });
+  function closePopup() {
+    if (eventPopup) eventPopup.classList.remove('open');
+    document.body.style.overflow = '';
   }
-  if (eventPopup) {
-    eventPopup.addEventListener('click', function (e) {
-      if (e.target === eventPopup) {
-        eventPopup.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-    });
-  }
+  if (popupClose) popupClose.addEventListener('click', closePopup);
+  if (eventPopup) eventPopup.addEventListener('click', function (e) { if (e.target === eventPopup) closePopup(); });
 
   renderCalendar(currentYear, currentMonth);
   renderUpcoming();
@@ -290,11 +426,8 @@
 (function () {
   document.querySelectorAll('form[data-netlify]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
-      // In real Netlify deployment, the form will redirect.
-      // This shows a success message for demo/local preview only.
       const successEl = form.querySelector('.form-success');
       if (!successEl) return;
-      // Let Netlify handle real submissions. Only intercept on localhost.
       if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:') {
         e.preventDefault();
         const btn = form.querySelector('button[type="submit"]');
@@ -325,14 +458,13 @@
   });
 }());
 
-/* ── Smooth Scroll for Anchor Links ──────────────────────── */
+/* ── Smooth Scroll ────────────────────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
   anchor.addEventListener('click', function (e) {
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
       e.preventDefault();
-      const offset = 88;
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      const top = target.getBoundingClientRect().top + window.scrollY - 88;
       window.scrollTo({ top: top, behavior: 'smooth' });
     }
   });
