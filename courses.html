@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heritage Christian Academy | Course Catalog | Homeschool High School Courses</title>
+  <meta name="description" content="Browse the full Heritage Christian Academy course catalog — Bible, English, Math, Science, Social Studies, Foreign Language, and Electives for grades 9-12." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M16 1 L30 6.5 L30 18 C30 25 23 30 16 32 C9 30 2 25 2 18 L2 6.5 Z' fill='%231B2A4A'/><rect x='14.5' y='9' width='3' height='15' fill='%23C8A45C' rx='1'/><rect x='9.5' y='14' width='13' height='3' fill='%23C8A45C' rx='1'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .cat-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:40px; justify-content:center; }
+    .cat-tab { padding:8px 20px; border:1.5px solid var(--border); border-radius:30px; font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; cursor:pointer; background:var(--white); color:var(--gray); transition:var(--transition); }
+    .cat-tab:hover,.cat-tab.active { background:var(--navy); color:var(--white); border-color:var(--navy); }
+    .cat-section { margin-bottom:64px; }
+    .cat-label { display:inline-flex; align-items:center; gap:10px; font-family:var(--font-sans); font-size:10.5px; font-weight:700; letter-spacing:3.5px; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+    .cat-label::before,.cat-label::after { content:''; display:block; width:22px; height:1px; background:var(--gold); flex-shrink:0; }
+    .cat-section h2 { font-family:var(--font-serif); font-size:clamp(22px,2.5vw,30px); font-weight:700; color:var(--navy); margin-bottom:24px; }
+    .course-list { display:flex; flex-direction:column; gap:10px; }
+    .course-card { border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden; }
+    .course-hd {
+      width:100%; display:flex; align-items:center; justify-content:space-between;
+      padding:18px 24px; background:var(--white); cursor:pointer; border:none;
+      text-align:left; transition:background 0.2s; gap:16px;
+    }
+    .course-hd:hover { background:var(--cream); }
+    .course-hd-left { flex:1; }
+    .course-code { font-size:10.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:3px; }
+    .course-name { font-family:var(--font-serif); font-size:17px; font-weight:600; color:var(--navy); }
+    .course-hd-meta { display:flex; align-items:center; gap:16px; flex-shrink:0; }
+    .course-badge { font-size:11px; font-weight:600; letter-spacing:0.5px; padding:4px 10px; border-radius:20px; white-space:nowrap; }
+    .badge-credits { background:rgba(184,148,62,0.12); color:var(--gold-dark); }
+    .badge-grades { background:rgba(44,24,16,0.07); color:var(--navy); }
+    .course-chevron { width:16px; height:16px; color:var(--gray); transition:transform 0.25s var(--ease); flex-shrink:0; }
+    .course-card.open .course-chevron { transform:rotate(180deg); }
+    .course-body { max-height:0; overflow:hidden; transition:max-height 0.35s var(--ease); background:var(--white); }
+    .course-body-inner { padding:0 24px 22px; border-top:1px solid var(--border); }
+    .course-body-inner p { margin-top:14px; font-size:15.5px; color:var(--gray); line-height:1.8; }
+    .course-meta-row { display:flex; gap:24px; flex-wrap:wrap; margin-top:14px; }
+    .course-meta-item { font-size:13px; color:var(--gray); }
+    .course-meta-item strong { color:var(--charcoal); font-weight:600; }
+    @media(max-width:640px) { .course-hd-meta { display:none; } .course-hd { flex-wrap:wrap; } }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container navbar-inner">
+    <a href="index.html" class="nav-logo"><svg class="nav-logo-icon" viewBox="0 0 28 32" fill="none"><path d="M14 1L26 6.5V18C26 24.5 20.5 29.5 14 31.5C7.5 29.5 2 24.5 2 18V6.5L14 1Z" fill="#1B2A4A" stroke="#C8A45C" stroke-width="1.5"/><rect x="12.5" y="9" width="3" height="15" rx="1.5" fill="#C8A45C"/><rect x="8" y="13.5" width="12" height="3" rx="1.5" fill="#C8A45C"/></svg><div class="nav-logo-text">Heritage Christian Academy<span>Homeschool High School</span></div></a>
+    <ul class="nav-links" role="list"><li><a href="index.html">Home</a></li><li class="has-dropdown"><a href="about.html">About <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="about.html">Our Story</a></li><li><a href="team.html">Our Team</a></li><li><a href="about.html#student-life">Student Life</a></li></ul></li><li class="has-dropdown"><a href="academics.html">Academics <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="academics.html">Overview</a></li><li><a href="courses.html">Course Catalog</a></li><li><a href="academics.html#diplomas">Graduation Reqs</a></li></ul></li><li><a href="howitworks.html">How It Works</a></li><li class="has-dropdown"><a href="admissions.html">Admissions <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="admissions.html">How to Apply</a></li><li><a href="admissions.html#tuition">Tuition &amp; Fees</a></li></ul></li><li class="has-dropdown"><a href="resources.html">Resources <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="resources.html">Parent Resources</a></li><li><a href="handbook.html">Student Handbook</a></li><li><a href="resources.html#transcripts">Transcripts</a></li></ul></li><li><a href="calendar.html">Calendar</a></li><li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <div class="nav-actions"><a href="contact.html#inquiry" class="nav-info-link">Request Info</a><a href="apply.html" class="btn btn-primary btn-sm">Apply Now</a></div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog">
+  <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="team.html">Our Team</a><a href="academics.html">Academics</a><a href="courses.html">Courses</a><a href="howitworks.html">How It Works</a><a href="admissions.html">Admissions</a><a href="resources.html">Resources</a><a href="handbook.html">Handbook</a><a href="calendar.html">Calendar</a><a href="news.html">News</a><a href="contact.html">Contact</a></nav>
+  <div class="mobile-menu-apply"><a href="apply.html" class="btn btn-primary">Apply Now</a></div>
+  <button class="mobile-close" id="mobile-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+</div>
+
+<section class="page-hero body-offset">
+  <div class="page-hero-bg" style="background:linear-gradient(150deg,#3a1008 0%,#2C1810 60%,#1A0E08 100%)"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container page-hero-content">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><a href="academics.html">Academics</a><span class="sep">/</span><span>Course Catalog</span></nav>
+    <p class="page-hero-label">Academic Programs</p>
+    <h1 class="page-hero-title">Course Catalog</h1>
+    <p class="page-hero-sub">30+ courses across 7 subject areas for grades 9–12. Every course integrates a biblical worldview.</p>
+  </div>
+  <div class="page-hero-accent"></div>
+</section>
+
+<section class="section bg-white">
+  <div class="container">
+    <div class="section-header centered fade-up" style="margin-bottom:40px">
+      <span class="section-label">2026–2027 Catalog</span>
+      <div class="accent-line"></div>
+      <h2>Full Course Listings</h2>
+      <p class="lead" style="max-width:560px;margin:14px auto 0">Click any course to see the full description, prerequisites, and credit information.</p>
+    </div>
+
+    <!-- BIBLE & THEOLOGY -->
+    <div class="cat-section fade-up">
+      <span class="cat-label">Bible &amp; Theology</span>
+      <h2>Bible &amp; Theology</h2>
+      <div class="course-list">
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">BIB101</div><div class="course-name">Old Testament Survey</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 9–12</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span><span class="course-meta-item"><strong>Duration:</strong> Full Year</span></div><p>A comprehensive study of the Old Testament from Genesis through Malachi. Students will explore the historical narrative, major themes, key figures, and prophetic writings. Emphasis on understanding God's covenant relationship with His people and its relevance to the Christian life today.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">BIB201</div><div class="course-name">New Testament Survey</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 9–12</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span><span class="course-meta-item"><strong>Duration:</strong> Full Year</span></div><p>An in-depth study of the New Testament from the Gospels through Revelation. Students examine the life and ministry of Jesus, the early church, Paul's letters, and the book of Revelation. Focus on applying New Testament principles to daily living.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">BIB301</div><div class="course-name">Christian Worldview</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 10–12</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> One Bible course</span><span class="course-meta-item"><strong>Duration:</strong> Full Year</span></div><p>How does a biblical worldview shape the way we understand culture, science, ethics, and politics? This course equips students to think critically about the world around them through the lens of Scripture and to articulate what they believe and why.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">BIB401</div><div class="course-name">Apologetics</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 11–12</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> Christian Worldview</span><span class="course-meta-item"><strong>Duration:</strong> Full Year</span></div><p>A study of the intellectual defense of the Christian faith. Students learn to respond thoughtfully to common objections, examine the evidence for Christianity, and develop the ability to share their faith with confidence and grace.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENGLISH -->
+    <div class="cat-section fade-up">
+      <span class="cat-label">English &amp; Language Arts</span>
+      <h2>English &amp; Language Arts</h2>
+      <div class="course-list">
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">ENG101</div><div class="course-name">English 9</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grade 9</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span></div><p>Foundational English course covering grammar, composition, vocabulary, and literature. Students write essays, short papers, and creative pieces while reading a variety of fiction and nonfiction texts.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">ENG201</div><div class="course-name">English 10</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grade 10</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> English 9</span></div><p>Continuation of English skills with deeper focus on analytical writing, research methods, and literary analysis. Students engage with novels, poetry, drama, and informational texts.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">ENG301</div><div class="course-name">American Literature</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grade 11</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> English 10</span></div><p>A survey of American literature from the colonial period through the modern era. Students read works by authors such as Hawthorne, Twain, Fitzgerald, and others while examining how American identity and values have been expressed through literature.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">ENG401</div><div class="course-name">British Literature</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grade 12</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> English 11</span></div><p>A survey of British literature from Beowulf through the twentieth century. Students explore major literary movements and analyze works by Shakespeare, Austen, Dickens, Lewis, and others.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">ENG150</div><div class="course-name">Creative Writing</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 9–12</span><span class="course-badge badge-credits">0.5 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span><span class="course-meta-item"><strong>Duration:</strong> Semester</span></div><p>Students explore multiple genres of creative writing including fiction, poetry, personal narrative, and scriptwriting. Focus on developing voice, style, and the discipline of revision.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">ENG250</div><div class="course-name">Speech &amp; Communication</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 10–12</span><span class="course-badge badge-credits">0.5 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span><span class="course-meta-item"><strong>Duration:</strong> Semester</span></div><p>Practical course in public speaking, presentation skills, debate fundamentals, and interpersonal communication. Students deliver speeches, participate in discussions, and develop confidence in expressing their ideas.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MATHEMATICS -->
+    <div class="cat-section fade-up">
+      <span class="cat-label">Mathematics</span>
+      <h2>Mathematics</h2>
+      <div class="course-list">
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">MTH101</div><div class="course-name">Algebra I</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 9–10</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span></div><p>Introduction to algebraic concepts including variables, equations, inequalities, functions, and graphing. Builds the mathematical foundation required for all higher-level math courses.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">MTH201</div><div class="course-name">Geometry</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 9–11</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> Algebra I</span></div><p>Study of geometric figures, proofs, area, volume, coordinate geometry, and trigonometric ratios. Develops logical reasoning and spatial thinking skills.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">MTH301</div><div class="course-name">Algebra II</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 10–12</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> Geometry</span></div><p>Advanced algebraic concepts including polynomials, rational expressions, logarithms, sequences, and an introduction to probability and statistics.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">MTH401</div><div class="course-name">Pre-Calculus</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 11–12</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> Algebra II</span></div><p>Preparation for college-level calculus covering advanced functions, trigonometry, analytical geometry, and limits. Recommended for students pursuing STEM fields.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">MTH150</div><div class="course-name">Consumer Mathematics</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 11–12</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> Algebra I</span></div><p>Practical math for life after high school: budgeting, taxes, banking, loans, insurance, and investing. Ideal for students who want real-world math skills.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCIENCE -->
+    <div class="cat-section fade-up">
+      <span class="cat-label">Science</span>
+      <h2>Science</h2>
+      <div class="course-list">
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">SCI101</div><div class="course-name">Biology</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 9–10</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span><span class="course-meta-item"><strong>Lab Science</strong></span></div><p>Study of living organisms including cell biology, genetics, ecology, and human anatomy. Includes hands-on lab activities conducted at home with provided materials list. Taught from a biblical creation perspective.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">SCI201</div><div class="course-name">Chemistry</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 10–12</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> Algebra I</span><span class="course-meta-item"><strong>Lab Science</strong></span></div><p>Introduction to chemical principles including atomic structure, bonding, reactions, stoichiometry, and solutions. Includes home lab experiments with common household materials.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">SCI301</div><div class="course-name">Physics</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 11–12</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> Algebra II</span><span class="course-meta-item"><strong>Lab Science</strong></span></div><p>Study of mechanics, energy, waves, electricity, and magnetism. Develops problem-solving skills and scientific reasoning. Lab component included.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">SCI150</div><div class="course-name">Environmental Science</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 9–12</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span></div><p>Exploration of ecosystems, conservation, pollution, climate, and humanity's role as stewards of God's creation. Field observation activities included.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">SCI250</div><div class="course-name">Anatomy &amp; Physiology</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 11–12</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> Biology</span></div><p>Detailed study of the human body systems. Designed for students interested in healthcare, sports medicine, or biological sciences.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOCIAL STUDIES -->
+    <div class="cat-section fade-up">
+      <span class="cat-label">Social Studies</span>
+      <h2>Social Studies</h2>
+      <div class="course-list">
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">SOC101</div><div class="course-name">World History</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 9–10</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span></div><p>Survey of world history from ancient civilizations through the modern era, examined through a biblical worldview. Students study the rise and fall of empires, the spread of Christianity, and the development of Western civilization.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">SOC201</div><div class="course-name">U.S. History</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 10–11</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span></div><p>Comprehensive study of American history from colonization through the present day. Emphasis on the founding principles, Constitutional government, major conflicts, and the role of faith in American life.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">SOC301</div><div class="course-name">U.S. Government &amp; Economics</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grade 12</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span></div><p>Study of the American political system, the Constitution, civic responsibility, and foundational economic principles. Students examine current events through a biblical lens and develop informed citizenship.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">SOC150</div><div class="course-name">Geography</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 9–12</span><span class="course-badge badge-credits">0.5 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span><span class="course-meta-item"><strong>Duration:</strong> Semester</span></div><p>Physical and cultural geography of the world's regions. Students study maps, demographics, natural resources, and how geography shapes civilizations.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOREIGN LANGUAGE -->
+    <div class="cat-section fade-up">
+      <span class="cat-label">Foreign Language</span>
+      <h2>Foreign Language</h2>
+      <div class="course-list">
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">FLG101</div><div class="course-name">Spanish I</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 9–12</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span></div><p>Introduction to the Spanish language covering basic vocabulary, grammar, pronunciation, and conversational skills. Cultural studies of Spanish-speaking countries included.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">FLG201</div><div class="course-name">Spanish II</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 10–12</span><span class="course-badge badge-credits">1.0 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> Spanish I</span></div><p>Continuation of Spanish language study with expanded vocabulary, intermediate grammar, reading comprehension, and conversational practice.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ELECTIVES -->
+    <div class="cat-section fade-up">
+      <span class="cat-label">Electives</span>
+      <h2>Electives</h2>
+      <div class="course-list">
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">ELE101</div><div class="course-name">Art</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 9–12</span><span class="course-badge badge-credits">0.5 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span></div><p>Introduction to visual arts including drawing, painting, design principles, and art history. Students complete a portfolio of original work.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">ELE201</div><div class="course-name">Music Appreciation</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 9–12</span><span class="course-badge badge-credits">0.5 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span></div><p>Survey of musical styles, theory, and history from classical to contemporary. Students develop listening skills and an appreciation for music as a form of worship and expression.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">ELE301</div><div class="course-name">Health &amp; Wellness</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 9–12</span><span class="course-badge badge-credits">0.5 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span></div><p>Study of physical health, nutrition, mental wellness, substance abuse prevention, and biblical principles of caring for the body as a temple.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">ELE401</div><div class="course-name">Introduction to Business</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 10–12</span><span class="course-badge badge-credits">0.5 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span></div><p>Foundational business concepts including entrepreneurship, marketing, accounting basics, and business ethics from a Christian perspective.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">ELE501</div><div class="course-name">Computer Science</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 10–12</span><span class="course-badge badge-credits">0.5 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span></div><p>Introduction to computational thinking, basic programming concepts, digital literacy, and responsible technology use.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">ELE601</div><div class="course-name">Physical Education</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 9–12</span><span class="course-badge badge-credits">0.5 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span></div><p>Self-directed physical fitness program. Students log activities, set fitness goals, and learn about exercise science and healthy habits.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">ELE701</div><div class="course-name">SAT/ACT Preparation</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 10–12</span><span class="course-badge badge-credits">0.5 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span></div><p>Test-taking strategies, practice exams, and content review for college entrance exams. Covers reading comprehension, writing, and mathematics.</p></div></div>
+        </div>
+        <div class="course-card">
+          <button class="course-hd" aria-expanded="false"><div class="course-hd-left"><div class="course-code">ELE801</div><div class="course-name">College Planning &amp; Preparation</div></div><div class="course-hd-meta"><span class="course-badge badge-grades">Grades 11–12</span><span class="course-badge badge-credits">0.5 Credit</span></div><svg class="course-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="course-body"><div class="course-body-inner"><div class="course-meta-row"><span class="course-meta-item"><strong>Prerequisites:</strong> None</span></div><p>Guided course covering college research, application writing, financial aid, scholarship applications, and interview preparation.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-up" style="text-align:center;padding:40px;background:var(--cream);border-radius:var(--radius);border:1px solid var(--border-gold)">
+      <h3 style="margin-bottom:10px">Ready to Enroll?</h3>
+      <p style="max-width:480px;margin:0 auto 24px">Work with your academic advisor to build a personalized course plan. Our team is here to help you choose the right courses for your student's goals and diploma track.</p>
+      <a href="apply.html" class="btn btn-primary btn-lg">Begin Application →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-scripture-top"><blockquote>"Train up a child in the way he should go; even when he is old he will not depart from it."</blockquote><cite>— Proverbs 22:6</cite></div>
+  <div class="footer-main"><div class="container"><div class="footer-grid">
+    <div><div class="footer-logo"><svg width="28" height="32" viewBox="0 0 28 32" fill="none"><path d="M14 1L26 6.5V18C26 24.5 20.5 29.5 14 31.5C7.5 29.5 2 24.5 2 18V6.5L14 1Z" fill="#243557" stroke="#C8A45C" stroke-width="1.5"/><rect x="12.5" y="9" width="3" height="15" rx="1.5" fill="#C8A45C"/><rect x="8" y="13.5" width="12" height="3" rx="1.5" fill="#C8A45C"/></svg><div class="footer-logo-text">Heritage Christian Academy<span>Homeschool High School</span></div></div><p class="footer-tagline">Equipping minds. Anchoring hearts. Glorifying God through excellence in education.</p></div>
+    <div><h4 class="footer-heading">Quick Links</h4><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="team.html">Our Team</a></li><li><a href="academics.html">Academics</a></li><li><a href="howitworks.html">How It Works</a></li><li><a href="admissions.html">Admissions</a></li><li><a href="calendar.html">Calendar</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4 class="footer-heading">Resources</h4><ul class="footer-links"><li><a href="courses.html">Course Catalog</a></li><li><a href="resources.html">Parent Resources</a></li><li><a href="handbook.html">Student Handbook</a></li><li><a href="faq.html">FAQ</a></li><li><a href="news.html">News</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+    <div><h4 class="footer-heading">Contact Us</h4><div class="footer-contact"><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.76a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg><span><a href="tel:[PHONE NUMBER]">[PHONE NUMBER]</a></span></div><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span><a href="mailto:[EMAIL ADDRESS]">[EMAIL ADDRESS]</a></span></div><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Mon–Fri, 8:00 AM – 4:00 PM</span></div></div></div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="footer-gold-line container"></div><div class="footer-bottom-inner"><span>© 2026 Heritage Christian Academy. All rights reserved.</span><div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a></div></div></div>
+</footer>
+<script src="script.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.course-hd').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var card = this.closest('.course-card');
+      var body = card.querySelector('.course-body');
+      var isOpen = card.classList.contains('open');
+      document.querySelectorAll('.course-card').forEach(function(c){
+        c.classList.remove('open');
+        c.querySelector('.course-body').style.maxHeight='0';
+        c.querySelector('.course-hd').setAttribute('aria-expanded','false');
+      });
+      if(!isOpen){
+        card.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        this.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

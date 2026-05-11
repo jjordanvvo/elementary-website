@@ -1,15 +1,24 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heritage Christian Academy | School Calendar | Important Dates &amp; Events</title>
-  <meta name="description" content="View the Heritage Christian Academy academic calendar — semester start and end dates, holidays, enrollment deadlines, progress report dates, and graduation." />
-  <meta property="og:title" content="School Calendar | Heritage Christian Academy" />
+  <title>Heritage Christian Academy | Privacy Policy</title>
+  <meta name="description" content="Heritage Christian Academy Privacy Policy — how we collect, use, and protect personal information for our students and families." />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M16 1 L30 6.5 L30 18 C30 25 23 30 16 32 C9 30 2 25 2 18 L2 6.5 Z' fill='%231B2A4A'/><rect x='14.5' y='9' width='3' height='15' fill='%23C8A45C' rx='1'/><rect x='9.5' y='14' width='13' height='3' fill='%23C8A45C' rx='1'/></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .priv-wrap { max-width:760px; margin:0 auto; }
+    .priv-section { margin-bottom:44px; }
+    .priv-section h3 { font-family:var(--font-serif); font-size:clamp(18px,2vw,22px); font-weight:700; color:var(--navy); margin-bottom:14px; padding-bottom:10px; border-bottom:2px solid var(--border-gold); }
+    .priv-section p { font-size:16px; color:var(--gray); line-height:1.85; margin-bottom:12px; }
+    .priv-section ul { display:flex; flex-direction:column; gap:8px; margin-top:10px; }
+    .priv-section ul li { font-size:16px; color:var(--gray); padding-left:20px; position:relative; line-height:1.75; }
+    .priv-section ul li::before { content:'–'; position:absolute; left:0; color:var(--gold); font-weight:700; }
+    .priv-meta { font-size:13px; color:var(--gray-light); margin-bottom:48px; }
+  </style>
 </head>
 <body>
 
@@ -27,134 +36,99 @@
   <button class="mobile-close" id="mobile-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
 </div>
 
-<!-- Page Hero -->
 <section class="page-hero body-offset">
-  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1600&auto=format&fit=crop&q=80')"></div>
+  <div class="page-hero-bg" style="background:linear-gradient(150deg,#3a1008 0%,#2C1810 60%,#1A0E08 100%)"></div>
   <div class="page-hero-overlay"></div>
   <div class="container page-hero-content">
-    <p class="page-hero-label fade-up">Plan Ahead</p>
-    <h1 class="page-hero-title fade-up">School Calendar</h1>
-    <p class="page-hero-sub fade-up">Key academic dates, holidays, enrollment deadlines, and events for the 2026–2027 school year. Click any highlighted date to see event details.</p>
+    <nav class="page-breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>Privacy Policy</span></nav>
+    <p class="page-hero-label">Legal</p>
+    <h1 class="page-hero-title">Privacy Policy</h1>
+    <p class="page-hero-sub">How Heritage Christian Academy collects, uses, and protects your personal information.</p>
   </div>
+  <div class="page-hero-accent"></div>
 </section>
 
-<!-- Calendar Section -->
-<section class="section bg-cream" id="calendar">
+<section class="section bg-white">
   <div class="container">
-    <div class="calendar-layout">
+    <div class="priv-wrap fade-up">
+      <p class="priv-meta">Heritage Christian Academy — Privacy Policy &nbsp;|&nbsp; Last Updated: May 2026</p>
 
-      <!-- Calendar Grid Column -->
-      <div class="calendar-col">
-        <div class="calendar-card">
-          <div class="calendar-nav">
-            <button class="cal-nav-btn" id="cal-prev" aria-label="Previous month">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <h2 class="cal-month-title" id="cal-month-title">Loading...</h2>
-            <button class="cal-nav-btn" id="cal-next" aria-label="Next month">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
-          </div>
-          <div class="calendar-grid" id="calendar-grid" role="grid" aria-label="Calendar"></div>
-        </div>
-
-        <!-- Legend -->
-        <div class="calendar-legend">
-          <h3 class="legend-title">Legend</h3>
-          <ul class="legend-list">
-            <li><span class="legend-dot academic"></span> Academic Dates</li>
-            <li><span class="legend-dot holiday"></span> Holidays &amp; Breaks</li>
-            <li><span class="legend-dot deadline"></span> Enrollment Deadlines</li>
-            <li><span class="legend-dot graduation"></span> Graduation</li>
-          </ul>
-        </div>
+      <div class="priv-section">
+        <p>Heritage Christian Academy is committed to protecting the privacy and security of our students and families. This policy explains how we collect, use, and safeguard personal information.</p>
       </div>
 
-      <!-- Upcoming Events Column -->
-      <div class="upcoming-col">
-        <div class="upcoming-card">
-          <h3 class="upcoming-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            Upcoming Events
-          </h3>
-          <div id="upcoming-list" class="upcoming-list"></div>
-          <div class="upcoming-footer">
-            <a href="contact.html" class="upcoming-contact-link">Questions about an event? <strong>Contact us →</strong></a>
-          </div>
-        </div>
-
-        <!-- Key Dates Quick Reference -->
-        <div class="key-dates-card">
-          <h3 class="key-dates-title">2026–2027 At a Glance</h3>
-          <table class="key-dates-table">
-            <tbody>
-              <tr>
-                <td>Fall Semester Begins</td>
-                <td><strong>Aug 12, 2026</strong></td>
-              </tr>
-              <tr>
-                <td>Fall Semester Ends</td>
-                <td><strong>Dec 13, 2026</strong></td>
-              </tr>
-              <tr>
-                <td>Winter Break</td>
-                <td><strong>Dec 16 – Jan 2</strong></td>
-              </tr>
-              <tr>
-                <td>Spring Semester Begins</td>
-                <td><strong>Jan 6, 2027</strong></td>
-              </tr>
-              <tr>
-                <td>Spring Break</td>
-                <td><strong>Mar 10–14, 2027</strong></td>
-              </tr>
-              <tr>
-                <td>Spring Semester Ends</td>
-                <td><strong>May 16, 2027</strong></td>
-              </tr>
-              <tr>
-                <td>Graduation Ceremony</td>
-                <td><strong>May 23, 2027</strong></td>
-              </tr>
-              <tr>
-                <td>Summer Break Begins</td>
-                <td><strong>Jun 1, 2027</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="priv-section">
+        <h3>Information We Collect</h3>
+        <p>We collect personal information provided during the enrollment process, including:</p>
+        <ul>
+          <li>Student name, date of birth, grade level, and academic history</li>
+          <li>Parent/guardian name, contact information, and mailing address</li>
+          <li>Medical and emergency contact information</li>
+          <li>Academic records, grades, and coursework</li>
+          <li>Payment and billing information</li>
+        </ul>
       </div>
 
+      <div class="priv-section">
+        <h3>How We Use Your Information</h3>
+        <p>Personal information is used solely for:</p>
+        <ul>
+          <li>Processing enrollment applications</li>
+          <li>Maintaining student academic records and transcripts</li>
+          <li>Communicating with families about student progress, school events, and administrative matters</li>
+          <li>Processing tuition payments</li>
+          <li>Complying with applicable legal requirements</li>
+        </ul>
+      </div>
+
+      <div class="priv-section">
+        <h3>Information Sharing</h3>
+        <p>Heritage Christian Academy does not sell, rent, or share personal information with third parties except:</p>
+        <ul>
+          <li>When required by law or legal process</li>
+          <li>With your written consent (e.g., sending transcripts to a college or another school)</li>
+          <li>With service providers who assist in operating our program (e.g., payment processors), who are bound by confidentiality agreements</li>
+        </ul>
+      </div>
+
+      <div class="priv-section">
+        <h3>Data Security</h3>
+        <p>We implement reasonable administrative, technical, and physical safeguards to protect personal information from unauthorized access, use, or disclosure. Student records are stored securely and access is limited to authorized staff only.</p>
+      </div>
+
+      <div class="priv-section">
+        <h3>Data Retention</h3>
+        <p>Student academic records are retained for a minimum of 7 years following the student's last date of enrollment. Financial records are retained in accordance with applicable tax and accounting requirements.</p>
+      </div>
+
+      <div class="priv-section">
+        <h3>Children's Privacy</h3>
+        <p>We comply with applicable laws regarding the collection of information from minors. We do not knowingly collect personal information from children under 13 without verified parental consent.</p>
+      </div>
+
+      <div class="priv-section">
+        <h3>Your Rights</h3>
+        <p>Parents and eligible students have the right to:</p>
+        <ul>
+          <li>Access their student's educational records</li>
+          <li>Request corrections to inaccurate information</li>
+          <li>Request deletion of personal information (subject to legal retention requirements)</li>
+          <li>Opt out of non-essential communications</li>
+        </ul>
+      </div>
+
+      <div class="priv-section">
+        <h3>Contact</h3>
+        <p>For questions about this privacy policy or to exercise your rights, contact:</p>
+        <p><strong>Heritage Christian Academy</strong><br>
+        <a href="mailto:[EMAIL]" style="color:var(--crimson)">[EMAIL]</a><br>
+        <a href="tel:[PHONE]" style="color:var(--crimson)">[PHONE]</a><br>
+        [ADDRESS]</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Event Popup Modal -->
-<div class="event-popup" id="event-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
-  <div class="event-popup-inner">
-    <button class="popup-close" id="popup-close" aria-label="Close event details">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <p class="popup-date" id="popup-date"></p>
-    <h3 class="popup-title" id="popup-title"></h3>
-    <p class="popup-desc" id="popup-desc"></p>
-  </div>
-</div>
-
-<!-- Stay Updated -->
-<section class="section bg-navy">
-  <div class="container">
-    <div class="newsletter-wrap fade-up">
-      <div class="newsletter-text">
-        <h2>Stay Up to Date</h2>
-        <p>Want to receive calendar updates and school announcements? Email us at [EMAIL ADDRESS] and we'll add you to our list.</p>
-      </div>
-      <a href="contact.html" class="btn btn-gold">Contact Us</a>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
 <footer class="footer" role="contentinfo">
   <div class="footer-scripture-top"><blockquote>"Train up a child in the way he should go; even when he is old he will not depart from it."</blockquote><cite>— Proverbs 22:6</cite></div>
   <div class="footer-main"><div class="container"><div class="footer-grid">
@@ -165,7 +139,6 @@
   </div></div></div>
   <div class="footer-bottom"><div class="footer-gold-line container"></div><div class="footer-bottom-inner"><span>© 2026 Heritage Christian Academy. All rights reserved.</span><div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a></div></div></div>
 </footer>
-
 <script src="script.js"></script>
 </body>
 </html>

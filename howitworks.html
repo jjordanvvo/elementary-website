@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heritage Christian Academy | How It Works | The Student Journey</title>
+  <meta name="description" content="From application to graduation — here's exactly what to expect at Heritage Christian Academy. See our 7-step student journey, sample schedule, and tech requirements." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M16 1 L30 6.5 L30 18 C30 25 23 30 16 32 C9 30 2 25 2 18 L2 6.5 Z' fill='%231B2A4A'/><rect x='14.5' y='9' width='3' height='15' fill='%23C8A45C' rx='1'/><rect x='9.5' y='14' width='13' height='3' fill='%23C8A45C' rx='1'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .journey { display:flex; flex-direction:column; gap:0; }
+    .journey-step { display:grid; grid-template-columns:80px 1fr; gap:0 32px; position:relative; }
+    .journey-step:not(:last-child)::after { content:''; position:absolute; left:39px; top:80px; bottom:-1px; width:2px; background:linear-gradient(to bottom,var(--gold),rgba(184,148,62,0.15)); z-index:0; }
+    .journey-num { display:flex; flex-direction:column; align-items:center; padding-top:4px; position:relative; z-index:1; }
+    .journey-circle { width:52px; height:52px; border-radius:50%; background:var(--crimson); color:var(--white); display:flex; align-items:center; justify-content:center; font-family:var(--font-serif); font-size:18px; font-weight:700; flex-shrink:0; box-shadow:0 4px 16px rgba(139,26,26,0.25); }
+    .journey-body { padding:0 0 56px; }
+    .journey-body h3 { font-family:var(--font-serif); font-size:clamp(20px,2.5vw,24px); font-weight:700; color:var(--navy); margin-bottom:10px; margin-top:10px; }
+    .journey-body p { font-size:16.5px; color:var(--gray); line-height:1.8; max-width:560px; }
+    .journey-icon { width:40px; height:40px; color:var(--gold); margin-bottom:8px; display:none; }
+
+    .schedule-table { width:100%; border-collapse:collapse; margin-top:24px; }
+    .schedule-table tr { border-bottom:1px solid var(--border); transition:background 0.15s; }
+    .schedule-table tr:last-child { border-bottom:none; }
+    .schedule-table tr:hover { background:rgba(184,148,62,0.05); }
+    .schedule-table td { padding:14px 20px; font-size:15.5px; color:var(--charcoal); }
+    .schedule-table td:first-child { font-weight:700; color:var(--navy); white-space:nowrap; width:130px; font-family:var(--font-sans); font-size:13.5px; }
+    .schedule-table td:last-child { color:var(--gray); }
+
+    .tech-list { display:grid; grid-template-columns:1fr 1fr; gap:12px 32px; margin-top:24px; }
+    .tech-item { display:flex; align-items:flex-start; gap:12px; }
+    .tech-check { width:20px; height:20px; border-radius:50%; background:rgba(139,26,26,0.1); color:var(--crimson); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+    .tech-check svg { width:11px; height:11px; }
+    .tech-text { font-size:15.5px; color:var(--gray); line-height:1.65; }
+
+    @media(max-width:640px) {
+      .journey-step { grid-template-columns:56px 1fr; gap:0 20px; }
+      .journey-circle { width:40px; height:40px; font-size:15px; }
+      .journey-step::after { left:29px; }
+      .tech-list { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container navbar-inner">
+    <a href="index.html" class="nav-logo"><svg class="nav-logo-icon" viewBox="0 0 28 32" fill="none"><path d="M14 1L26 6.5V18C26 24.5 20.5 29.5 14 31.5C7.5 29.5 2 24.5 2 18V6.5L14 1Z" fill="#1B2A4A" stroke="#C8A45C" stroke-width="1.5"/><rect x="12.5" y="9" width="3" height="15" rx="1.5" fill="#C8A45C"/><rect x="8" y="13.5" width="12" height="3" rx="1.5" fill="#C8A45C"/></svg><div class="nav-logo-text">Heritage Christian Academy<span>Homeschool High School</span></div></a>
+    <ul class="nav-links" role="list"><li><a href="index.html">Home</a></li><li class="has-dropdown"><a href="about.html">About <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="about.html">Our Story</a></li><li><a href="team.html">Our Team</a></li><li><a href="about.html#student-life">Student Life</a></li></ul></li><li class="has-dropdown"><a href="academics.html">Academics <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="academics.html">Overview</a></li><li><a href="courses.html">Course Catalog</a></li><li><a href="academics.html#diplomas">Graduation Reqs</a></li></ul></li><li><a href="howitworks.html">How It Works</a></li><li class="has-dropdown"><a href="admissions.html">Admissions <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="admissions.html">How to Apply</a></li><li><a href="admissions.html#tuition">Tuition &amp; Fees</a></li></ul></li><li class="has-dropdown"><a href="resources.html">Resources <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="resources.html">Parent Resources</a></li><li><a href="handbook.html">Student Handbook</a></li><li><a href="resources.html#transcripts">Transcripts</a></li></ul></li><li><a href="calendar.html">Calendar</a></li><li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <div class="nav-actions"><a href="contact.html#inquiry" class="nav-info-link">Request Info</a><a href="apply.html" class="btn btn-primary btn-sm">Apply Now</a></div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog">
+  <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="team.html">Our Team</a><a href="academics.html">Academics</a><a href="courses.html">Courses</a><a href="howitworks.html">How It Works</a><a href="admissions.html">Admissions</a><a href="resources.html">Resources</a><a href="handbook.html">Handbook</a><a href="calendar.html">Calendar</a><a href="news.html">News</a><a href="contact.html">Contact</a></nav>
+  <div class="mobile-menu-apply"><a href="apply.html" class="btn btn-primary">Apply Now</a></div>
+  <button class="mobile-close" id="mobile-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+</div>
+
+<section class="page-hero body-offset">
+  <div class="page-hero-bg" style="background:linear-gradient(150deg,#3a1008 0%,#2C1810 60%,#1A0E08 100%)"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container page-hero-content">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>How It Works</span></nav>
+    <p class="page-hero-label">The Student Journey</p>
+    <h1 class="page-hero-title">How It Works</h1>
+    <p class="page-hero-sub">From application to graduation — here's what to expect at Heritage Christian Academy.</p>
+  </div>
+  <div class="page-hero-accent"></div>
+</section>
+
+<!-- Journey Steps -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="section-header centered fade-up">
+      <span class="section-label">Step by Step</span>
+      <div class="accent-line"></div>
+      <h2>Your Path from Application to Diploma</h2>
+    </div>
+    <div class="journey fade-up" style="max-width:680px;margin:0 auto">
+      <div class="journey-step">
+        <div class="journey-num"><div class="journey-circle">1</div></div>
+        <div class="journey-body"><h3>Apply</h3><p>Complete our online enrollment application. It takes about 15–20 minutes. You'll need your student's previous school records and some basic medical information.</p></div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-num"><div class="journey-circle">2</div></div>
+        <div class="journey-body"><h3>Get Accepted</h3><p>Our admissions team reviews your application within 3–5 business days. We'll reach out to schedule a phone consultation to discuss your student's goals and needs.</p></div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-num"><div class="journey-circle">3</div></div>
+        <div class="journey-body"><h3>Choose Your Courses</h3><p>Work with your academic advisor to select courses and build a personalized academic plan based on your student's grade level, interests, and diploma track.</p></div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-num"><div class="journey-circle">4</div></div>
+        <div class="journey-body"><h3>Set Up Your Account</h3><p>Receive your enrollment packet with login credentials, course materials access, and your student handbook. Everything you need to get started in one place.</p></div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-num"><div class="journey-circle">5</div></div>
+        <div class="journey-body"><h3>Start Learning</h3><p>Your student begins coursework from home on a flexible schedule. Lessons are self-paced with teacher support available throughout the week.</p></div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-num"><div class="journey-circle">6</div></div>
+        <div class="journey-body"><h3>Stay on Track</h3><p>Regular progress reports keep you informed every four weeks. Your academic advisor monitors progress and reaches out if your student needs extra support.</p></div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-num"><div class="journey-circle">7</div></div>
+        <div class="journey-body"><h3>Graduate</h3><p>Complete all graduation requirements, receive your official Heritage Christian Academy diploma and transcripts, and step confidently into the next chapter.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sample Schedule -->
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-header centered fade-up">
+      <span class="section-label">Sample School Day</span>
+      <div class="accent-line"></div>
+      <h2>A Day in the Life</h2>
+      <p class="lead" style="max-width:540px;margin:14px auto 0">There's no single right way to structure your school day. Here's a sample schedule that works for many of our families:</p>
+    </div>
+    <div style="max-width:620px;margin:0 auto" class="fade-up">
+      <div style="background:var(--white);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow)">
+        <table class="schedule-table">
+          <tbody>
+            <tr><td>8:00 AM</td><td>Morning devotional and prayer</td></tr>
+            <tr><td>8:30 AM</td><td>Bible / Theology</td></tr>
+            <tr><td>9:30 AM</td><td>Mathematics</td></tr>
+            <tr><td>10:30 AM</td><td>Break (15 minutes)</td></tr>
+            <tr><td>10:45 AM</td><td>English / Language Arts</td></tr>
+            <tr><td>11:45 AM</td><td>Lunch break</td></tr>
+            <tr><td>12:30 PM</td><td>Science</td></tr>
+            <tr><td>1:30 PM</td><td>Social Studies or Elective</td></tr>
+            <tr><td>2:30 PM</td><td>Independent reading or project work</td></tr>
+            <tr><td>3:00 PM</td><td style="color:var(--crimson);font-weight:600">Done for the day</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:24px;font-size:15.5px;color:var(--gray);line-height:1.8;font-style:italic">This is a suggestion, not a requirement. One of the biggest benefits of Heritage Christian Academy is the flexibility to build a schedule that works for your family. Some students work best in the morning. Others prefer afternoon sessions. As long as the work gets done, we support your family's rhythm.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Tech Requirements -->
+<section class="section bg-white" id="tech-requirements">
+  <div class="container">
+    <div class="section-header centered fade-up">
+      <span class="section-label">Getting Started</span>
+      <div class="accent-line"></div>
+      <h2>What You'll Need</h2>
+      <p class="lead" style="max-width:500px;margin:14px auto 0">No special software or expensive setup required. Here's what every student needs:</p>
+    </div>
+    <div style="max-width:700px;margin:0 auto" class="fade-up">
+      <div class="tech-list">
+        <div class="tech-item"><div class="tech-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tech-text">Computer or laptop (Chromebook, Mac, or Windows)</div></div>
+        <div class="tech-item"><div class="tech-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tech-text">Reliable internet connection (5+ Mbps)</div></div>
+        <div class="tech-item"><div class="tech-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tech-text">Updated web browser (Chrome, Firefox, Safari, or Edge)</div></div>
+        <div class="tech-item"><div class="tech-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tech-text">Printer (recommended, not required)</div></div>
+        <div class="tech-item"><div class="tech-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tech-text">Email address for student and parent</div></div>
+        <div class="tech-item"><div class="tech-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tech-text">Webcam and microphone (for occasional live sessions)</div></div>
+        <div class="tech-item"><div class="tech-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tech-text">Basic school supplies: notebook, pens, calculator</div></div>
+      </div>
+      <p style="margin-top:32px;text-align:center;font-size:1.0625rem;font-weight:600;color:var(--navy)">That's it. No special software, no expensive textbooks, no complicated setup.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <h2 class="fade-up">Ready to Get Started?</h2>
+    <p class="fade-up">Applications are open year-round. The whole process takes about 15–20 minutes.</p>
+    <div class="cta-buttons fade-up"><a href="apply.html" class="btn btn-gold btn-lg">Begin Application →</a><a href="contact.html" class="btn btn-outline-white btn-lg">Ask a Question</a></div>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-scripture-top"><blockquote>"Train up a child in the way he should go; even when he is old he will not depart from it."</blockquote><cite>— Proverbs 22:6</cite></div>
+  <div class="footer-main"><div class="container"><div class="footer-grid">
+    <div><div class="footer-logo"><svg width="28" height="32" viewBox="0 0 28 32" fill="none"><path d="M14 1L26 6.5V18C26 24.5 20.5 29.5 14 31.5C7.5 29.5 2 24.5 2 18V6.5L14 1Z" fill="#243557" stroke="#C8A45C" stroke-width="1.5"/><rect x="12.5" y="9" width="3" height="15" rx="1.5" fill="#C8A45C"/><rect x="8" y="13.5" width="12" height="3" rx="1.5" fill="#C8A45C"/></svg><div class="footer-logo-text">Heritage Christian Academy<span>Homeschool High School</span></div></div><p class="footer-tagline">Equipping minds. Anchoring hearts. Glorifying God through excellence in education.</p></div>
+    <div><h4 class="footer-heading">Quick Links</h4><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="team.html">Our Team</a></li><li><a href="academics.html">Academics</a></li><li><a href="howitworks.html">How It Works</a></li><li><a href="admissions.html">Admissions</a></li><li><a href="calendar.html">Calendar</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4 class="footer-heading">Resources</h4><ul class="footer-links"><li><a href="courses.html">Course Catalog</a></li><li><a href="resources.html">Parent Resources</a></li><li><a href="handbook.html">Student Handbook</a></li><li><a href="faq.html">FAQ</a></li><li><a href="news.html">News</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+    <div><h4 class="footer-heading">Contact Us</h4><div class="footer-contact"><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.76a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg><span><a href="tel:[PHONE NUMBER]">[PHONE NUMBER]</a></span></div><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span><a href="mailto:[EMAIL ADDRESS]">[EMAIL ADDRESS]</a></span></div><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Mon–Fri, 8:00 AM – 4:00 PM</span></div></div></div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="footer-gold-line container"></div><div class="footer-bottom-inner"><span>© 2026 Heritage Christian Academy. All rights reserved.</span><div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a></div></div></div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

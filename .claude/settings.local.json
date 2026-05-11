@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Start-Process \"C:\\\\Users\\\\silly\\\\Desktop\\\\elementary-website\\\\index.html\")",
+      "Bash(start *)",
+      "Bash(git *)",
+      "PowerShell(Rename-Item *)",
+      "Bash(Start-Process *)",
+      "PowerShell(Start-Process \"C:\\\\Users\\\\silly\\\\Desktop\\\\elementary-website\\\\apply.html\")"
+    ]
+  }
+}

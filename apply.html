@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heritage Christian Academy | Enrollment Application</title>
+  <meta name="description" content="Apply to Heritage Christian Academy. Complete our enrollment application for our Christ-centered homeschool high school program serving grades 9–12." />
+  <meta property="og:title" content="Enrollment Application | Heritage Christian Academy" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M16 1 L30 6.5 L30 18 C30 25 23 30 16 32 C9 30 2 25 2 18 L2 6.5 Z' fill='%231B2A4A'/><rect x='14.5' y='9' width='3' height='15' fill='%23C8A45C' rx='1'/><rect x='9.5' y='14' width='13' height='3' fill='%23C8A45C' rx='1'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Apply Page ── */
+    .apply-hero {
+      background: linear-gradient(150deg, #4a1515 0%, #1B2A4A 65%, #111e32 100%);
+      padding: 130px 0 72px;
+      text-align: center;
+    }
+    .apply-hero-label {
+      display: inline-block;
+      font-size: .75rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #d4aa6a;
+      margin-bottom: 14px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+    }
+    .apply-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.9rem, 5vw, 2.9rem);
+      color: #fff;
+      margin: 0 0 14px;
+      line-height: 1.15;
+    }
+    .apply-hero p {
+      color: rgba(255,255,255,.72);
+      font-size: 1.0625rem;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Progress */
+    .apply-progress {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background: #fff;
+      border-bottom: 1px solid #ddd7cc;
+      padding: 11px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+    .apply-progress-inner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .progress-label {
+      font-size: .8125rem;
+      font-weight: 600;
+      color: #1B2A4A;
+      white-space: nowrap;
+      min-width: 220px;
+      font-family: var(--font-sans);
+    }
+    .progress-track {
+      flex: 1;
+      height: 5px;
+      background: #e8e2d8;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #C8A45C;
+      border-radius: 99px;
+      transition: width .4s ease;
+      width: 12.5%;
+    }
+
+    /* Save note */
+    .apply-save-note {
+      background: #fffbf0;
+      border-bottom: 1px solid #e8dfc8;
+      padding: 9px 0;
+    }
+    .apply-save-note p {
+      font-size: .8125rem;
+      color: #7a6a50;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    /* Sections */
+    .apply-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .apply-section {
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #ddd7cc;
+      overflow: hidden;
+    }
+    .apply-sec-hd {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 17px 22px;
+      background: #1B2A4A;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: var(--font-sans);
+      transition: background .2s;
+    }
+    .apply-sec-hd:hover { background: #243557; }
+    .sec-num {
+      font-family: var(--font-serif);
+      font-size: 1.1875rem;
+      color: #d4aa6a;
+      font-weight: 700;
+      min-width: 28px;
+      line-height: 1;
+    }
+    .sec-title { flex: 1; }
+    .sec-chevron {
+      width: 17px;
+      height: 17px;
+      transition: transform .3s;
+      flex-shrink: 0;
+    }
+    .apply-sec-hd[aria-expanded="false"] .sec-chevron { transform: rotate(-90deg); }
+
+    .apply-sec-body {
+      overflow: hidden;
+      transition: max-height .35s ease, opacity .3s ease;
+      opacity: 1;
+    }
+    .apply-sec-body.is-closed {
+      opacity: 0;
+    }
+    .apply-sec-body-inner {
+      padding: 26px 22px 30px;
+    }
+
+    /* Fields */
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .field-row.col3 { grid-template-columns: 1fr 1fr 1fr; }
+    .field-row.col1 { grid-template-columns: 1fr; }
+    .field-row.sig2 { grid-template-columns: 2fr 1fr; }
+    .fld { display: flex; flex-direction: column; gap: 5px; }
+    .fld label {
+      font-size: .875rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      font-family: var(--font-sans);
+    }
+    .fld label .req { color: #8B1A1A; margin-left: 2px; }
+    .fld input, .fld select, .fld textarea {
+      border: 1.5px solid #c4bbb0;
+      border-radius: 6px;
+      padding: 9px 11px;
+      font-size: .9375rem;
+      font-family: var(--font-sans);
+      color: #1a1a1a;
+      background: #fff;
+      outline: none;
+      transition: border-color .18s, box-shadow .18s;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .fld input:focus, .fld select:focus, .fld textarea:focus {
+      border-color: #C8A45C;
+      box-shadow: 0 0 0 3px rgba(200,164,92,.16);
+    }
+    .fld input.err, .fld select.err, .fld textarea.err { border-color: #8B1A1A; }
+    .fld .err-msg {
+      font-size: .75rem;
+      color: #8B1A1A;
+      display: none;
+      margin-top: 1px;
+    }
+    .fld.show-err .err-msg { display: block; }
+    .fld input[readonly] { background: #f4f1ec; color: #666; cursor: default; }
+
+    /* Radios / Checks */
+    .radio-group, .check-group {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-top: 3px;
+    }
+    .radio-group.horiz { flex-direction: row; flex-wrap: wrap; gap: 18px; }
+    .radio-opt, .check-opt {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: .9375rem;
+      cursor: pointer;
+      color: #1a1a1a;
+      line-height: 1.4;
+    }
+    .radio-opt input[type="radio"],
+    .check-opt input[type="checkbox"] {
+      width: auto !important;
+      margin-top: 3px;
+      flex-shrink: 0;
+      accent-color: #C8A45C;
+    }
+
+    /* Conditional */
+    .cond-field {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height .3s ease, opacity .3s ease;
+    }
+    .cond-field.open {
+      max-height: 220px;
+      opacity: 1;
+    }
+    .cond-inner {
+      margin-top: 10px;
+      padding: 14px 16px;
+      background: #fffbf0;
+      border-radius: 6px;
+      border: 1px solid #e8dfc8;
+    }
+    .cond-inner label {
+      font-size: .875rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      display: block;
+      margin-bottom: 5px;
+      font-family: var(--font-sans);
+    }
+    .cond-inner textarea {
+      border: 1.5px solid #c4bbb0;
+      border-radius: 6px;
+      padding: 9px 11px;
+      font-size: .9375rem;
+      font-family: var(--font-sans);
+      width: 100%;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color .18s, box-shadow .18s;
+    }
+    .cond-inner textarea:focus {
+      border-color: #C8A45C;
+      box-shadow: 0 0 0 3px rgba(200,164,92,.16);
+    }
+
+    /* Subsection */
+    .subsec {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1B2A4A;
+      margin: 26px 0 14px;
+      padding-bottom: 7px;
+      border-bottom: 2px solid #C8A45C;
+    }
+    .subsec:first-child { margin-top: 0; }
+
+    /* Note bar */
+    .sec-note {
+      font-size: .875rem;
+      color: #6b5f50;
+      background: #fffbf0;
+      border-left: 3px solid #C8A45C;
+      padding: 11px 15px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 22px;
+      line-height: 1.55;
+    }
+
+    /* Toggle parent btn */
+    .toggle-p2-btn {
+      background: none;
+      border: 2px dashed #C8A45C;
+      border-radius: 8px;
+      padding: 13px 20px;
+      font-size: .9375rem;
+      color: #1B2A4A;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      font-weight: 600;
+      margin-top: 20px;
+      transition: background .2s;
+      font-family: var(--font-sans);
+    }
+    .toggle-p2-btn:hover { background: #fffbf0; }
+    .sec2-parent { display: none; }
+    .sec2-parent.open { display: block; }
+
+    /* Course grid */
+    .course-grp { margin-bottom: 22px; }
+    .course-grp-title {
+      font-size: .875rem;
+      font-weight: 700;
+      color: #1B2A4A;
+      margin-bottom: 9px;
+    }
+    .course-grp-title em { font-size: .8em; font-weight: 400; color: #888; }
+    .course-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+
+    /* Agreements */
+    .agr-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 13px 14px;
+      border: 1px solid #ddd7cc;
+      border-radius: 8px;
+      margin-bottom: 9px;
+      background: #fafaf8;
+      transition: border-color .2s;
+    }
+    .agr-item.err-border { border-color: #8B1A1A !important; }
+    .agr-item input[type="checkbox"] {
+      width: 17px !important;
+      height: 17px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      accent-color: #C8A45C;
+    }
+    .agr-item label {
+      font-size: .9rem;
+      color: #1a1a1a;
+      line-height: 1.55;
+      cursor: pointer;
+    }
+    .agr-item label a { color: #7a5c14; text-decoration: underline; }
+    .agr-item label a:hover { color: #C8A45C; }
+
+    /* Signature block */
+    .sig-block {
+      background: #f4f1ec;
+      border: 1px solid #c4bbb0;
+      border-radius: 8px;
+      padding: 22px 20px;
+      margin-top: 22px;
+    }
+    .sig-block p { font-size: .875rem; color: #4a3f2f; margin-bottom: 14px; line-height: 1.55; }
+
+    /* Submit wrap */
+    .apply-submit-wrap {
+      max-width: 900px;
+      margin: 14px auto 0;
+      background: #fff;
+      border: 1px solid #ddd7cc;
+      border-radius: 8px;
+      padding: 30px 24px;
+      text-align: center;
+    }
+    .submit-review { font-size: .9375rem; color: #3a3a3a; margin-bottom: 6px; line-height: 1.6; }
+    .submit-fee { font-size: .875rem; color: #6b5f50; margin-bottom: 22px; }
+    .btn-crimson {
+      background: #8B1A1A;
+      color: #fff;
+      border: 2px solid #8B1A1A;
+      padding: 14px 40px;
+      font-size: 1.0625rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-family: var(--font-sans);
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      display: inline-block;
+    }
+    .btn-crimson:hover { background: #6d1414; border-color: #6d1414; transform: translateY(-1px); }
+
+    /* Success */
+    .apply-success {
+      max-width: 660px;
+      margin: 48px auto 60px;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .success-icon {
+      width: 68px;
+      height: 68px;
+      background: #C8A45C;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .apply-success h2 {
+      font-family: var(--font-serif);
+      font-size: 1.875rem;
+      color: #1B2A4A;
+      margin-bottom: 10px;
+    }
+    .apply-success > p { font-size: 1rem; color: #3a3a3a; margin-bottom: 26px; }
+    .next-steps {
+      background: #fff;
+      border: 1px solid #ddd7cc;
+      border-radius: 8px;
+      padding: 22px 26px;
+      text-align: left;
+      margin-bottom: 24px;
+    }
+    .next-steps h3 { font-size: 1rem; font-weight: 700; color: #1B2A4A; margin-bottom: 14px; }
+    .next-steps ol { padding-left: 18px; display: flex; flex-direction: column; gap: 9px; }
+    .next-steps ol li { font-size: .9375rem; color: #1a1a1a; line-height: 1.5; }
+    .success-contact { font-size: .875rem; color: #6b5f50; margin-bottom: 22px; }
+    .success-contact a { color: #7a5c14; }
+
+    /* SOF Modal */
+    .sof-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.58);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s;
+    }
+    .sof-overlay.open { opacity: 1; pointer-events: all; }
+    .sof-box {
+      background: #fff;
+      border-radius: 10px;
+      max-width: 580px;
+      width: 100%;
+      max-height: 82vh;
+      overflow-y: auto;
+      padding: 34px 30px;
+      position: relative;
+    }
+    .sof-box h2 {
+      font-family: var(--font-serif);
+      color: #1B2A4A;
+      margin-bottom: 18px;
+      font-size: 1.4375rem;
+    }
+    .sof-box p { font-size: .9375rem; color: #1a1a1a; line-height: 1.65; margin-bottom: 12px; }
+    .sof-close-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #888;
+      padding: 4px;
+      line-height: 1;
+    }
+    .sof-close-btn:hover { color: #1B2A4A; }
+
+    @media (max-width: 640px) {
+      .field-row, .field-row.col3, .field-row.sig2 { grid-template-columns: 1fr; }
+      .apply-progress-inner { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .progress-label { min-width: auto; }
+      .course-grid { grid-template-columns: 1fr; }
+      .apply-sec-body-inner { padding: 18px 14px 22px; }
+      .apply-submit-wrap { padding: 22px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container navbar-inner">
+    <a href="index.html" class="nav-logo"><svg class="nav-logo-icon" viewBox="0 0 28 32" fill="none"><path d="M14 1L26 6.5V18C26 24.5 20.5 29.5 14 31.5C7.5 29.5 2 24.5 2 18V6.5L14 1Z" fill="#1B2A4A" stroke="#C8A45C" stroke-width="1.5"/><rect x="12.5" y="9" width="3" height="15" rx="1.5" fill="#C8A45C"/><rect x="8" y="13.5" width="12" height="3" rx="1.5" fill="#C8A45C"/></svg><div class="nav-logo-text">Heritage Christian Academy<span>Homeschool High School</span></div></a>
+    <ul class="nav-links" role="list"><li><a href="index.html">Home</a></li><li class="has-dropdown"><a href="about.html">About <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="about.html">Our Story</a></li><li><a href="team.html">Our Team</a></li><li><a href="about.html#student-life">Student Life</a></li></ul></li><li class="has-dropdown"><a href="academics.html">Academics <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="academics.html">Overview</a></li><li><a href="courses.html">Course Catalog</a></li><li><a href="academics.html#diplomas">Graduation Reqs</a></li></ul></li><li><a href="howitworks.html">How It Works</a></li><li class="has-dropdown"><a href="admissions.html">Admissions <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="admissions.html">How to Apply</a></li><li><a href="admissions.html#tuition">Tuition &amp; Fees</a></li></ul></li><li class="has-dropdown"><a href="resources.html">Resources <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="resources.html">Parent Resources</a></li><li><a href="handbook.html">Student Handbook</a></li><li><a href="resources.html#transcripts">Transcripts</a></li></ul></li><li><a href="calendar.html">Calendar</a></li><li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <div class="nav-actions"><a href="contact.html#inquiry" class="nav-info-link">Request Info</a><a href="apply.html" class="btn btn-primary btn-sm">Apply Now</a></div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog">
+  <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="team.html">Our Team</a><a href="academics.html">Academics</a><a href="courses.html">Courses</a><a href="howitworks.html">How It Works</a><a href="admissions.html">Admissions</a><a href="resources.html">Resources</a><a href="handbook.html">Handbook</a><a href="calendar.html">Calendar</a><a href="news.html">News</a><a href="contact.html">Contact</a></nav>
+  <div class="mobile-menu-apply"><a href="apply.html" class="btn btn-primary">Apply Now</a></div>
+  <button class="mobile-close" id="mobile-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+</div>
+
+<!-- Hero -->
+<section class="apply-hero body-offset">
+  <div class="container">
+    <p class="apply-hero-label">Enrollment</p>
+    <h1>Enrollment Application</h1>
+    <p>Complete the application below to begin the enrollment process for Heritage Christian Academy. Please allow 3–5 business days for review.</p>
+  </div>
+</section>
+
+<!-- Progress Bar -->
+<div class="apply-progress" id="apply-progress">
+  <div class="container apply-progress-inner">
+    <span class="progress-label" id="prog-label">Section 1 of 8 — Student Information</span>
+    <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="12" id="prog-track">
+      <div class="progress-fill" id="prog-fill"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Save Note -->
+<div class="apply-save-note">
+  <div class="container">
+    <p><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>This form does not save progress. We recommend gathering all information before starting.</p>
+  </div>
+</div>
+
+<!-- Form -->
+<section class="section bg-cream" id="apply-form-section">
+  <div class="container">
+
+    <form method="POST" data-netlify="true" name="enrollment-application" id="enroll-form" novalidate>
+      <input type="hidden" name="form-name" value="enrollment-application" />
+
+      <div class="apply-sections">
+
+        <!-- ── SECTION 1: STUDENT INFORMATION ── -->
+        <div class="apply-section" id="sec-1" data-section="1" data-title="Student Information">
+          <button type="button" class="apply-sec-hd" aria-expanded="true" aria-controls="sec-1-body">
+            <span class="sec-num">01</span><span class="sec-title">Student Information</span>
+            <svg class="sec-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="apply-sec-body" id="sec-1-body">
+            <div class="apply-sec-body-inner">
+              <div class="field-row col3">
+                <div class="fld"><label for="s-fn">Legal First Name <span class="req">*</span></label><input type="text" id="s-fn" name="student_first_name" required /><span class="err-msg">Required.</span></div>
+                <div class="fld"><label for="s-mn">Legal Middle Name</label><input type="text" id="s-mn" name="student_middle_name" /></div>
+                <div class="fld"><label for="s-ln">Legal Last Name <span class="req">*</span></label><input type="text" id="s-ln" name="student_last_name" required /><span class="err-msg">Required.</span></div>
+              </div>
+              <div class="field-row">
+                <div class="fld"><label for="s-nick">Preferred Name / Nickname</label><input type="text" id="s-nick" name="student_preferred_name" /></div>
+                <div class="fld"><label for="s-dob">Date of Birth <span class="req">*</span></label><input type="date" id="s-dob" name="student_dob" required /><span class="err-msg">Required.</span></div>
+              </div>
+              <div class="field-row">
+                <div class="fld"><label for="s-gender">Gender</label><select id="s-gender" name="student_gender"><option value="">— Select —</option><option>Male</option><option>Female</option></select></div>
+                <div class="fld"><label for="s-grade">Grade Applying For <span class="req">*</span></label><select id="s-grade" name="grade_applying_for" required><option value="">— Select grade —</option><option>9th Grade</option><option>10th Grade</option><option>11th Grade</option><option>12th Grade</option></select><span class="err-msg">Required.</span></div>
+              </div>
+              <div class="field-row col1">
+                <div class="fld"><label for="s-start">Anticipated Start Date</label><select id="s-start" name="anticipated_start"><option value="">— Select —</option><option>Fall 2026 (August)</option><option>Spring 2027 (January)</option><option>Summer 2027</option><option>Fall 2027 (August)</option></select></div>
+              </div>
+              <div class="field-row col1">
+                <div class="fld">
+                  <label>Enrollment Type <span class="req">*</span></label>
+                  <div class="radio-group">
+                    <label class="radio-opt"><input type="radio" name="enrollment_type" value="Full-Time (5+ courses per year)" required /> <span><strong>Full-Time</strong> — 5 or more courses per year</span></label>
+                    <label class="radio-opt"><input type="radio" name="enrollment_type" value="Part-Time (1–4 courses per year)" /> <span><strong>Part-Time</strong> — 1 to 4 courses per year</span></label>
+                  </div>
+                </div>
+              </div>
+              <div class="field-row col1">
+                <div class="fld">
+                  <label>Diploma Track Preference</label>
+                  <div class="radio-group">
+                    <label class="radio-opt"><input type="radio" name="diploma_track" value="Standard Diploma (25.5 credits)" /> <span><strong>Standard Diploma</strong> — 25.5 credits</span></label>
+                    <label class="radio-opt"><input type="radio" name="diploma_track" value="College Preparatory Diploma (28 credits)" /> <span><strong>College Preparatory Diploma</strong> — 28 credits</span></label>
+                    <label class="radio-opt"><input type="radio" name="diploma_track" value="Undecided — requesting advisor guidance" /> <span><strong>Undecided</strong> — I'd like guidance from an advisor</span></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SECTION 2: PARENT / GUARDIAN ── -->
+        <div class="apply-section" id="sec-2" data-section="2" data-title="Parent / Guardian Information">
+          <button type="button" class="apply-sec-hd" aria-expanded="true" aria-controls="sec-2-body">
+            <span class="sec-num">02</span><span class="sec-title">Parent / Guardian Information</span>
+            <svg class="sec-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="apply-sec-body" id="sec-2-body">
+            <div class="apply-sec-body-inner">
+              <p class="subsec">Primary Parent / Guardian</p>
+              <div class="field-row">
+                <div class="fld"><label for="p1-fn">First Name <span class="req">*</span></label><input type="text" id="p1-fn" name="parent1_first" required /><span class="err-msg">Required.</span></div>
+                <div class="fld"><label for="p1-ln">Last Name <span class="req">*</span></label><input type="text" id="p1-ln" name="parent1_last" required /><span class="err-msg">Required.</span></div>
+              </div>
+              <div class="field-row">
+                <div class="fld"><label for="p1-rel">Relationship to Student <span class="req">*</span></label><select id="p1-rel" name="parent1_relationship" required><option value="">— Select —</option><option>Mother</option><option>Father</option><option>Stepmother</option><option>Stepfather</option><option>Legal Guardian</option><option>Grandparent</option><option>Other</option></select><span class="err-msg">Required.</span></div>
+                <div class="fld"><label for="p1-email">Email Address <span class="req">*</span></label><input type="email" id="p1-email" name="parent1_email" required /><span class="err-msg">Valid email required.</span></div>
+              </div>
+              <div class="field-row">
+                <div class="fld"><label for="p1-cell">Cell Phone <span class="req">*</span></label><input type="tel" id="p1-cell" name="parent1_cell" required /><span class="err-msg">Required.</span></div>
+                <div class="fld"><label for="p1-home">Home Phone</label><input type="tel" id="p1-home" name="parent1_home" /></div>
+              </div>
+              <div class="field-row col1">
+                <div class="fld"><label for="p1-addr">Mailing Address — Street <span class="req">*</span></label><input type="text" id="p1-addr" name="parent1_address" required autocomplete="street-address" /><span class="err-msg">Required.</span></div>
+              </div>
+              <div class="field-row col3">
+                <div class="fld"><label for="p1-city">City <span class="req">*</span></label><input type="text" id="p1-city" name="parent1_city" required /><span class="err-msg">Required.</span></div>
+                <div class="fld"><label for="p1-state">State <span class="req">*</span></label>
+                  <select id="p1-state" name="parent1_state" required>
+                    <option value="">— State —</option>
+                    <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option>
+                  </select><span class="err-msg">Required.</span></div>
+                <div class="fld"><label for="p1-zip">ZIP Code <span class="req">*</span></label><input type="text" id="p1-zip" name="parent1_zip" required maxlength="10" /><span class="err-msg">Required.</span></div>
+              </div>
+              <div class="field-row col1">
+                <div class="fld"><label>Preferred Contact Method</label>
+                  <div class="radio-group horiz">
+                    <label class="radio-opt"><input type="radio" name="parent1_contact_pref" value="Email" /> Email</label>
+                    <label class="radio-opt"><input type="radio" name="parent1_contact_pref" value="Phone" /> Phone</label>
+                    <label class="radio-opt"><input type="radio" name="parent1_contact_pref" value="Text" /> Text</label>
+                    <label class="radio-opt"><input type="radio" name="parent1_contact_pref" value="No Preference" /> No Preference</label>
+                  </div>
+                </div>
+              </div>
+
+              <button type="button" class="toggle-p2-btn" id="toggle-p2" aria-expanded="false">+ Add Second Parent / Guardian</button>
+
+              <div class="sec2-parent" id="sec2-parent">
+                <p class="subsec">Secondary Parent / Guardian</p>
+                <div class="field-row">
+                  <div class="fld"><label for="p2-fn">First Name</label><input type="text" id="p2-fn" name="parent2_first" /></div>
+                  <div class="fld"><label for="p2-ln">Last Name</label><input type="text" id="p2-ln" name="parent2_last" /></div>
+                </div>
+                <div class="field-row">
+                  <div class="fld"><label for="p2-rel">Relationship to Student</label><select id="p2-rel" name="parent2_relationship"><option value="">— Select —</option><option>Mother</option><option>Father</option><option>Stepmother</option><option>Stepfather</option><option>Legal Guardian</option><option>Grandparent</option><option>Other</option></select></div>
+                  <div class="fld"><label for="p2-email">Email Address</label><input type="email" id="p2-email" name="parent2_email" /></div>
+                </div>
+                <div class="field-row">
+                  <div class="fld"><label for="p2-cell">Cell Phone</label><input type="tel" id="p2-cell" name="parent2_cell" /></div>
+                  <div class="fld"><label for="p2-home">Home Phone</label><input type="tel" id="p2-home" name="parent2_home" /></div>
+                </div>
+                <div class="field-row col1">
+                  <div class="fld"><label for="p2-addr">Mailing Address — Street</label><input type="text" id="p2-addr" name="parent2_address" /></div>
+                </div>
+                <div class="field-row col3">
+                  <div class="fld"><label for="p2-city">City</label><input type="text" id="p2-city" name="parent2_city" /></div>
+                  <div class="fld"><label for="p2-state">State</label>
+                    <select id="p2-state" name="parent2_state">
+                      <option value="">— State —</option>
+                      <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option>
+                    </select></div>
+                  <div class="fld"><label for="p2-zip">ZIP Code</label><input type="text" id="p2-zip" name="parent2_zip" maxlength="10" /></div>
+                </div>
+                <div class="field-row col1">
+                  <div class="fld"><label>Preferred Contact Method</label>
+                    <div class="radio-group horiz">
+                      <label class="radio-opt"><input type="radio" name="parent2_contact_pref" value="Email" /> Email</label>
+                      <label class="radio-opt"><input type="radio" name="parent2_contact_pref" value="Phone" /> Phone</label>
+                      <label class="radio-opt"><input type="radio" name="parent2_contact_pref" value="Text" /> Text</label>
+                      <label class="radio-opt"><input type="radio" name="parent2_contact_pref" value="No Preference" /> No Preference</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SECTION 3: HOUSEHOLD ── -->
+        <div class="apply-section" id="sec-3" data-section="3" data-title="Household Information">
+          <button type="button" class="apply-sec-hd" aria-expanded="true" aria-controls="sec-3-body">
+            <span class="sec-num">03</span><span class="sec-title">Household Information</span>
+            <svg class="sec-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="apply-sec-body" id="sec-3-body">
+            <div class="apply-sec-body-inner">
+              <div class="field-row">
+                <div class="fld"><label for="marital">Marital Status of Parents</label><select id="marital" name="marital_status"><option value="">— Select —</option><option>Married</option><option>Divorced</option><option>Separated</option><option>Widowed</option><option>Single Parent</option><option>Other</option></select></div>
+                <div class="fld"><label for="church-nm">Church Name and Denomination</label><input type="text" id="church-nm" name="church_name" placeholder="e.g. Grace Bible Church — Baptist" /></div>
+              </div>
+              <div class="field-row">
+                <div class="fld"><label for="pastor">Pastor's Name</label><input type="text" id="pastor" name="pastor_name" /></div>
+                <div class="fld"><label for="church-len">How long has your family attended this church?</label><select id="church-len" name="church_tenure"><option value="">— Select —</option><option>Less than 1 year</option><option>1–3 years</option><option>3–5 years</option><option>5+ years</option><option>We do not currently attend a church</option></select></div>
+              </div>
+              <div class="field-row">
+                <div class="fld"><label for="num-kids">Number of children in household</label><input type="number" id="num-kids" name="num_children_household" min="1" max="20" /></div>
+                <div class="fld"><label for="num-enroll">Number of children enrolling at Heritage Christian Academy</label><input type="number" id="num-enroll" name="num_children_enrolling" min="1" max="10" /></div>
+              </div>
+              <div class="field-row">
+                <div class="fld"><label for="heard">How did you hear about us?</label><select id="heard" name="referral_source"><option value="">— Select —</option><option>Online Search</option><option>Friend or Family Referral</option><option>Church</option><option>Social Media</option><option>Homeschool Group</option><option>School Fair / Event</option><option>Other</option></select></div>
+                <div class="fld"><label for="referred-by">If referred, by whom?</label><input type="text" id="referred-by" name="referred_by" placeholder="Name of person or group" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SECTION 4: ACADEMIC HISTORY ── -->
+        <div class="apply-section" id="sec-4" data-section="4" data-title="Academic History">
+          <button type="button" class="apply-sec-hd" aria-expanded="true" aria-controls="sec-4-body">
+            <span class="sec-num">04</span><span class="sec-title">Academic History</span>
+            <svg class="sec-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="apply-sec-body" id="sec-4-body">
+            <div class="apply-sec-body-inner">
+              <div class="field-row">
+                <div class="fld"><label for="prev-school">Previous School / Program Name <span class="req">*</span></label><input type="text" id="prev-school" name="previous_school" required /><span class="err-msg">Required.</span></div>
+                <div class="fld"><label for="prev-loc">City, State of Previous School</label><input type="text" id="prev-loc" name="previous_school_location" placeholder="e.g. Dallas, TX" /></div>
+              </div>
+              <div class="field-row">
+                <div class="fld"><label for="dates-att">Dates Attended</label><input type="text" id="dates-att" name="dates_attended" placeholder="e.g. Aug 2022 – May 2025" /></div>
+                <div class="fld"><label for="prev-type">Type of Previous Education</label><select id="prev-type" name="previous_school_type"><option value="">— Select —</option><option>Public School</option><option>Private School</option><option>Homeschool — Parent-Directed</option><option>Homeschool — Online Academy</option><option>Homeschool Co-op</option><option>Other</option></select></div>
+              </div>
+              <div class="field-row">
+                <div class="fld"><label for="last-grade">Last Grade Completed</label><select id="last-grade" name="last_grade_completed"><option value="">— Select —</option><option>8th Grade</option><option>9th Grade</option><option>10th Grade</option><option>11th Grade</option></select></div>
+                <div class="fld"><label for="gpa">Current GPA (if known)</label><input type="text" id="gpa" name="current_gpa" placeholder="e.g. 3.4" /></div>
+              </div>
+
+              <div class="field-row col1">
+                <div class="fld">
+                  <label>Has the student ever been expelled, suspended, or asked to leave a school? <span class="req">*</span></label>
+                  <div class="radio-group horiz">
+                    <label class="radio-opt"><input type="radio" name="disciplinary_history" value="No" required data-hides="cond-disc" /> No</label>
+                    <label class="radio-opt"><input type="radio" name="disciplinary_history" value="Yes" data-reveals="cond-disc" /> Yes</label>
+                  </div>
+                </div>
+              </div>
+              <div class="cond-field" id="cond-disc"><div class="cond-inner"><label for="disc-exp">Please explain</label><textarea id="disc-exp" name="disciplinary_explanation" rows="3"></textarea></div></div>
+
+              <div class="field-row col1" style="margin-top:14px">
+                <div class="fld">
+                  <label>Has the student ever been held back or repeated a grade? <span class="req">*</span></label>
+                  <div class="radio-group horiz">
+                    <label class="radio-opt"><input type="radio" name="grade_retained" value="No" required data-hides="cond-ret" /> No</label>
+                    <label class="radio-opt"><input type="radio" name="grade_retained" value="Yes" data-reveals="cond-ret" /> Yes</label>
+                  </div>
+                </div>
+              </div>
+              <div class="cond-field" id="cond-ret"><div class="cond-inner"><label for="ret-exp">Please explain</label><textarea id="ret-exp" name="retained_explanation" rows="3"></textarea></div></div>
+
+              <div class="field-row col1" style="margin-top:14px">
+                <div class="fld">
+                  <label>Has the student ever received special education services, an IEP, or 504 plan? <span class="req">*</span></label>
+                  <div class="radio-group horiz">
+                    <label class="radio-opt"><input type="radio" name="special_ed" value="No" required data-hides="cond-sped" /> No</label>
+                    <label class="radio-opt"><input type="radio" name="special_ed" value="Yes" data-reveals="cond-sped" /> Yes</label>
+                  </div>
+                </div>
+              </div>
+              <div class="cond-field" id="cond-sped"><div class="cond-inner"><label for="sped-exp">Please describe</label><textarea id="sped-exp" name="special_ed_description" rows="3"></textarea></div></div>
+
+              <div class="field-row col1" style="margin-top:14px">
+                <div class="fld">
+                  <label>Does the student have any diagnosed learning differences or disabilities? <span class="req">*</span></label>
+                  <div class="radio-group horiz">
+                    <label class="radio-opt"><input type="radio" name="learning_diff" value="No" required data-hides="cond-ld" /> No</label>
+                    <label class="radio-opt"><input type="radio" name="learning_diff" value="Yes" data-reveals="cond-ld" /> Yes</label>
+                  </div>
+                </div>
+              </div>
+              <div class="cond-field" id="cond-ld"><div class="cond-inner"><label for="ld-exp">Please describe</label><textarea id="ld-exp" name="learning_differences_description" rows="3"></textarea></div></div>
+
+              <div class="sec-note" style="margin-top:18px">Official transcripts or academic records from the student's previous school will be required before enrollment is finalized. These can be mailed or emailed to our admissions office.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SECTION 5: COURSE SELECTION ── -->
+        <div class="apply-section" id="sec-5" data-section="5" data-title="Course Selection">
+          <button type="button" class="apply-sec-hd" aria-expanded="true" aria-controls="sec-5-body">
+            <span class="sec-num">05</span><span class="sec-title">Course Selection (Preliminary)</span>
+            <svg class="sec-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="apply-sec-body" id="sec-5-body">
+            <div class="apply-sec-body-inner">
+              <div class="sec-note">Final course placement will be determined in consultation with an academic advisor. Please indicate your preferences below.</div>
+              <div class="course-grp">
+                <p class="course-grp-title">Bible &amp; Theology <em>(select one)</em></p>
+                <div class="course-grid">
+                  <label class="check-opt"><input type="checkbox" name="course_bible" value="Old Testament Survey" /> Old Testament Survey</label>
+                  <label class="check-opt"><input type="checkbox" name="course_bible" value="New Testament Survey" /> New Testament Survey</label>
+                  <label class="check-opt"><input type="checkbox" name="course_bible" value="Christian Worldview" /> Christian Worldview</label>
+                  <label class="check-opt"><input type="checkbox" name="course_bible" value="Apologetics" /> Apologetics</label>
+                </div>
+              </div>
+              <div class="course-grp">
+                <p class="course-grp-title">English <em>(select one)</em></p>
+                <div class="course-grid">
+                  <label class="check-opt"><input type="checkbox" name="course_english" value="English 9" /> English 9</label>
+                  <label class="check-opt"><input type="checkbox" name="course_english" value="English 10" /> English 10</label>
+                  <label class="check-opt"><input type="checkbox" name="course_english" value="English 11 — American Literature" /> English 11 — American Literature</label>
+                  <label class="check-opt"><input type="checkbox" name="course_english" value="English 12 — British Literature" /> English 12 — British Literature</label>
+                </div>
+              </div>
+              <div class="course-grp">
+                <p class="course-grp-title">Mathematics <em>(select one)</em></p>
+                <div class="course-grid">
+                  <label class="check-opt"><input type="checkbox" name="course_math" value="Algebra I" /> Algebra I</label>
+                  <label class="check-opt"><input type="checkbox" name="course_math" value="Geometry" /> Geometry</label>
+                  <label class="check-opt"><input type="checkbox" name="course_math" value="Algebra II" /> Algebra II</label>
+                  <label class="check-opt"><input type="checkbox" name="course_math" value="Pre-Calculus" /> Pre-Calculus</label>
+                  <label class="check-opt"><input type="checkbox" name="course_math" value="Consumer Mathematics" /> Consumer Mathematics</label>
+                </div>
+              </div>
+              <div class="course-grp">
+                <p class="course-grp-title">Science <em>(select one)</em></p>
+                <div class="course-grid">
+                  <label class="check-opt"><input type="checkbox" name="course_science" value="Biology" /> Biology</label>
+                  <label class="check-opt"><input type="checkbox" name="course_science" value="Chemistry" /> Chemistry</label>
+                  <label class="check-opt"><input type="checkbox" name="course_science" value="Physics" /> Physics</label>
+                  <label class="check-opt"><input type="checkbox" name="course_science" value="Environmental Science" /> Environmental Science</label>
+                </div>
+              </div>
+              <div class="course-grp">
+                <p class="course-grp-title">Social Studies <em>(select one)</em></p>
+                <div class="course-grid">
+                  <label class="check-opt"><input type="checkbox" name="course_social" value="World History" /> World History</label>
+                  <label class="check-opt"><input type="checkbox" name="course_social" value="U.S. History" /> U.S. History</label>
+                  <label class="check-opt"><input type="checkbox" name="course_social" value="U.S. Government &amp; Economics" /> U.S. Government &amp; Economics</label>
+                  <label class="check-opt"><input type="checkbox" name="course_social" value="Geography" /> Geography</label>
+                </div>
+              </div>
+              <div class="course-grp">
+                <p class="course-grp-title">Foreign Language <em>(select one)</em></p>
+                <div class="course-grid">
+                  <label class="check-opt"><input type="checkbox" name="course_language" value="Spanish I" /> Spanish I</label>
+                  <label class="check-opt"><input type="checkbox" name="course_language" value="Spanish II" /> Spanish II</label>
+                  <label class="check-opt"><input type="checkbox" name="course_language" value="Not taking foreign language this year" /> Not taking foreign language this year</label>
+                </div>
+              </div>
+              <div class="course-grp">
+                <p class="course-grp-title">Electives <em>(select up to 2)</em></p>
+                <div class="course-grid">
+                  <label class="check-opt"><input type="checkbox" name="course_elective" value="Art" /> Art</label>
+                  <label class="check-opt"><input type="checkbox" name="course_elective" value="Music Appreciation" /> Music Appreciation</label>
+                  <label class="check-opt"><input type="checkbox" name="course_elective" value="Health &amp; Wellness" /> Health &amp; Wellness</label>
+                  <label class="check-opt"><input type="checkbox" name="course_elective" value="Introduction to Business" /> Introduction to Business</label>
+                  <label class="check-opt"><input type="checkbox" name="course_elective" value="Computer Science" /> Computer Science</label>
+                  <label class="check-opt"><input type="checkbox" name="course_elective" value="Speech &amp; Communication" /> Speech &amp; Communication</label>
+                  <label class="check-opt"><input type="checkbox" name="course_elective" value="Creative Writing" /> Creative Writing</label>
+                  <label class="check-opt"><input type="checkbox" name="course_elective" value="Physical Education" /> Physical Education</label>
+                  <label class="check-opt"><input type="checkbox" name="course_elective" value="SAT/ACT Preparation" /> SAT/ACT Preparation</label>
+                  <label class="check-opt"><input type="checkbox" name="course_elective" value="College Planning" /> College Planning</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SECTION 6: FAITH & CHARACTER ── -->
+        <div class="apply-section" id="sec-6" data-section="6" data-title="Faith &amp; Character">
+          <button type="button" class="apply-sec-hd" aria-expanded="true" aria-controls="sec-6-body">
+            <span class="sec-num">06</span><span class="sec-title">Faith &amp; Character</span>
+            <svg class="sec-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="apply-sec-body" id="sec-6-body">
+            <div class="apply-sec-body-inner">
+              <div class="field-row col1">
+                <div class="fld"><label for="faith-bg">Briefly describe your family's faith background and church involvement <span class="req">*</span></label><textarea id="faith-bg" name="faith_background" rows="4" required placeholder="3–5 sentences suggested"></textarea><span class="err-msg">Required.</span></div>
+              </div>
+              <div class="field-row col1">
+                <div class="fld"><label for="why-christian">Why are you choosing a Christian education for your student? <span class="req">*</span></label><textarea id="why-christian" name="reason_christian_education" rows="4" required></textarea><span class="err-msg">Required.</span></div>
+              </div>
+              <div class="field-row col1">
+                <div class="fld"><label for="hopes">What are your hopes and goals for your student at Heritage Christian Academy?</label><textarea id="hopes" name="hopes_and_goals" rows="3"></textarea></div>
+              </div>
+              <div class="field-row col1">
+                <div class="fld"><label>Does the student profess a personal faith in Jesus Christ?</label>
+                  <div class="radio-group horiz">
+                    <label class="radio-opt"><input type="radio" name="student_faith" value="Yes" /> Yes</label>
+                    <label class="radio-opt"><input type="radio" name="student_faith" value="No" /> No</label>
+                    <label class="radio-opt"><input type="radio" name="student_faith" value="Exploring" /> Exploring</label>
+                  </div>
+                </div>
+              </div>
+              <div class="field-row col1">
+                <div class="fld"><label for="add-char">Is there anything else about your student's character, interests, or circumstances that would help us serve them better?</label><textarea id="add-char" name="additional_character_info" rows="3" placeholder="Optional"></textarea></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SECTION 7: MEDICAL & EMERGENCY ── -->
+        <div class="apply-section" id="sec-7" data-section="7" data-title="Medical &amp; Emergency Information">
+          <button type="button" class="apply-sec-hd" aria-expanded="true" aria-controls="sec-7-body">
+            <span class="sec-num">07</span><span class="sec-title">Medical &amp; Emergency Information</span>
+            <svg class="sec-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="apply-sec-body" id="sec-7-body">
+            <div class="apply-sec-body-inner">
+              <div class="field-row">
+                <div class="fld"><label for="physician">Primary Care Physician Name</label><input type="text" id="physician" name="physician_name" /></div>
+                <div class="fld"><label for="physician-ph">Physician Phone Number</label><input type="tel" id="physician-ph" name="physician_phone" /></div>
+              </div>
+              <div class="field-row">
+                <div class="fld"><label for="ins-co">Health Insurance Provider</label><input type="text" id="ins-co" name="insurance_provider" /></div>
+                <div class="fld"><label for="ins-pol">Policy Number</label><input type="text" id="ins-pol" name="insurance_policy_number" /></div>
+              </div>
+              <div class="field-row col1">
+                <div class="fld"><label for="allergies">Known Allergies <span class="req">*</span></label><textarea id="allergies" name="known_allergies" rows="2" required placeholder='List all, or write "None"'></textarea><span class="err-msg">Required — write "None" if none.</span></div>
+              </div>
+              <div class="field-row col1">
+                <div class="fld"><label for="meds">Current Medications <span class="req">*</span></label><textarea id="meds" name="current_medications" rows="2" required placeholder='List all, or write "None"'></textarea><span class="err-msg">Required — write "None" if none.</span></div>
+              </div>
+              <div class="field-row col1">
+                <div class="fld"><label for="med-cond">Medical Conditions or Concerns <span class="req">*</span></label><textarea id="med-cond" name="medical_conditions" rows="2" required placeholder='Describe, or write "None"'></textarea><span class="err-msg">Required — write "None" if none.</span></div>
+              </div>
+              <div class="field-row col1">
+                <div class="fld"><label>Does the student require any accommodations for medical reasons?</label>
+                  <div class="radio-group horiz">
+                    <label class="radio-opt"><input type="radio" name="med_accom" value="No" data-hides="cond-accom" /> No</label>
+                    <label class="radio-opt"><input type="radio" name="med_accom" value="Yes" data-reveals="cond-accom" /> Yes</label>
+                  </div>
+                </div>
+              </div>
+              <div class="cond-field" id="cond-accom"><div class="cond-inner"><label for="accom-exp">Please describe the accommodations needed</label><textarea id="accom-exp" name="medical_accommodations_description" rows="3"></textarea></div></div>
+
+              <p class="subsec" style="margin-top:26px">Emergency Contact (other than parents listed above)</p>
+              <div class="field-row col3">
+                <div class="fld"><label for="ec-name">Name <span class="req">*</span></label><input type="text" id="ec-name" name="emergency_contact_name" required /><span class="err-msg">Required.</span></div>
+                <div class="fld"><label for="ec-rel">Relationship to Student <span class="req">*</span></label><input type="text" id="ec-rel" name="emergency_contact_relationship" required placeholder="e.g. Grandparent, Aunt" /><span class="err-msg">Required.</span></div>
+                <div class="fld"><label for="ec-phone">Phone Number <span class="req">*</span></label><input type="tel" id="ec-phone" name="emergency_contact_phone" required /><span class="err-msg">Required.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SECTION 8: AGREEMENTS ── -->
+        <div class="apply-section" id="sec-8" data-section="8" data-title="Agreements &amp; Acknowledgements">
+          <button type="button" class="apply-sec-hd" aria-expanded="true" aria-controls="sec-8-body">
+            <span class="sec-num">08</span><span class="sec-title">Agreements &amp; Acknowledgements</span>
+            <svg class="sec-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="apply-sec-body" id="sec-8-body">
+            <div class="apply-sec-body-inner">
+              <p style="font-size:.9rem;color:#555;margin-bottom:18px">Please read each statement carefully and check the box to confirm your agreement. All items are required.</p>
+              <div class="agr-item"><input type="checkbox" id="agr-1" name="agr_accuracy" required /><label for="agr-1">I certify that all information provided in this application is true and accurate to the best of my knowledge. I understand that providing false information may result in denial or revocation of enrollment.</label></div>
+              <div class="agr-item"><input type="checkbox" id="agr-2" name="agr_faith" required /><label for="agr-2">I have read and agree to the Heritage Christian Academy <a href="#" class="open-sof">Statement of Faith</a>. I understand that all instruction is delivered from a biblical Christian worldview.</label></div>
+              <div class="agr-item"><input type="checkbox" id="agr-3" name="agr_homeschool" required /><label for="agr-3">I understand that Heritage Christian Academy is a homeschool program and that as the parent/guardian, I am the primary educator responsible for my student's daily learning.</label></div>
+              <div class="agr-item"><input type="checkbox" id="agr-4" name="agr_communication" required /><label for="agr-4">I agree to maintain open communication with Heritage Christian Academy staff regarding my student's academic progress, behavior, and well-being.</label></div>
+              <div class="agr-item"><input type="checkbox" id="agr-5" name="agr_transcripts" required /><label for="agr-5">I understand that official transcripts or records from my student's previous school must be submitted before enrollment is finalized.</label></div>
+              <div class="agr-item"><input type="checkbox" id="agr-6" name="agr_tuition" required /><label for="agr-6">I understand that tuition and fees are due according to the payment schedule and that failure to maintain payments may result in suspension of services.</label></div>
+              <div class="agr-item"><input type="checkbox" id="agr-7" name="agr_privacy" required /><label for="agr-7">I consent to Heritage Christian Academy maintaining academic records, transcripts, and personal information for my student in accordance with applicable privacy regulations.</label></div>
+
+              <div class="sig-block">
+                <p>By typing your full legal name below, you are providing a digital signature and acknowledging that you have read and agree to all statements above.</p>
+                <div class="field-row sig2">
+                  <div class="fld"><label for="sig-name">Full Legal Name <span class="req">*</span></label><input type="text" id="sig-name" name="digital_signature" required placeholder="Type your full legal name" /><span class="err-msg">Digital signature required.</span></div>
+                  <div class="fld"><label for="sig-date">Date</label><input type="text" id="sig-date" name="signature_date" readonly /></div>
+                </div>
+                <div class="field-row col1">
+                  <div class="fld"><label for="sig-rel">Relationship to Student <span class="req">*</span></label><select id="sig-rel" name="signer_relationship" required><option value="">— Select —</option><option>Mother</option><option>Father</option><option>Legal Guardian</option></select><span class="err-msg">Required.</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.apply-sections -->
+
+      <!-- Submit -->
+      <div class="apply-submit-wrap" id="submit-wrap">
+        <p class="submit-review">Please review your application before submitting. Once submitted, you will receive a confirmation email within 24 hours. Our admissions team will review your application and contact you within 3–5 business days.</p>
+        <p class="submit-fee">Application Fee: [AMOUNT TBD] — You will be contacted regarding payment after your application is reviewed.</p>
+        <button type="submit" class="btn-crimson" id="submit-btn">Submit Application</button>
+      </div>
+
+    </form>
+
+    <!-- Success Screen -->
+    <div class="apply-success" id="apply-success" style="display:none" role="alert" aria-live="polite">
+      <div class="success-icon" aria-hidden="true">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2>Application Received</h2>
+      <p>Thank you for applying to Heritage Christian Academy. Your application has been received and is under review.</p>
+      <div class="next-steps">
+        <h3>What happens next:</h3>
+        <ol>
+          <li>You will receive a confirmation email within 24 hours.</li>
+          <li>Our admissions team will review your application within 3–5 business days.</li>
+          <li>You may be contacted to schedule a phone consultation.</li>
+          <li>Once accepted, you will receive an enrollment packet with next steps.</li>
+        </ol>
+      </div>
+      <p class="success-contact">If you have questions, contact our admissions office at <a href="mailto:[EMAIL ADDRESS]">[EMAIL ADDRESS]</a> or <a href="tel:[PHONE NUMBER]">[PHONE NUMBER]</a>.</p>
+      <a href="index.html" class="btn btn-primary">Return to Homepage</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Statement of Faith Modal -->
+<div class="sof-overlay" id="sof-modal" role="dialog" aria-modal="true" aria-labelledby="sof-title">
+  <div class="sof-box">
+    <button class="sof-close-btn" id="sof-close" aria-label="Close Statement of Faith">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h2 id="sof-title">Statement of Faith</h2>
+    <p>We believe the <strong>Bible is the inspired, infallible Word of God</strong> — the authoritative standard for faith and practice.</p>
+    <p>We believe in <strong>one God, eternally existing in three persons: Father, Son, and Holy Spirit</strong>. We believe that Jesus Christ is Lord and Savior, fully God and fully man, who died for our sins, rose bodily from the dead, and is coming again.</p>
+    <p>We believe that <strong>salvation comes through faith in Jesus Christ alone</strong> — by grace, through faith — and that every believer is called to walk in obedience to God's Word.</p>
+    <p>These truths are the foundation of everything we teach. <strong>Every family enrolling in our program is asked to affirm these beliefs</strong> and commit to a home environment that supports a Christian education.</p>
+    <button class="btn btn-primary" id="sof-close-btn" style="margin-top:6px">Close</button>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-scripture-top"><blockquote>"Train up a child in the way he should go; even when he is old he will not depart from it."</blockquote><cite>— Proverbs 22:6</cite></div>
+  <div class="footer-main"><div class="container"><div class="footer-grid">
+    <div><div class="footer-logo"><svg width="28" height="32" viewBox="0 0 28 32" fill="none"><path d="M14 1L26 6.5V18C26 24.5 20.5 29.5 14 31.5C7.5 29.5 2 24.5 2 18V6.5L14 1Z" fill="#243557" stroke="#C8A45C" stroke-width="1.5"/><rect x="12.5" y="9" width="3" height="15" rx="1.5" fill="#C8A45C"/><rect x="8" y="13.5" width="12" height="3" rx="1.5" fill="#C8A45C"/></svg><div class="footer-logo-text">Heritage Christian Academy<span>Homeschool High School</span></div></div><p class="footer-tagline">Equipping minds. Anchoring hearts. Glorifying God through excellence in education.</p></div>
+    <div><h4 class="footer-heading">Quick Links</h4><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="team.html">Our Team</a></li><li><a href="academics.html">Academics</a></li><li><a href="howitworks.html">How It Works</a></li><li><a href="admissions.html">Admissions</a></li><li><a href="calendar.html">Calendar</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4 class="footer-heading">Resources</h4><ul class="footer-links"><li><a href="courses.html">Course Catalog</a></li><li><a href="resources.html">Parent Resources</a></li><li><a href="handbook.html">Student Handbook</a></li><li><a href="faq.html">FAQ</a></li><li><a href="news.html">News</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+    <div><h4 class="footer-heading">Contact Us</h4><div class="footer-contact"><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.76a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg><span><a href="tel:[PHONE NUMBER]">[PHONE NUMBER]</a></span></div><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span><a href="mailto:[EMAIL ADDRESS]">[EMAIL ADDRESS]</a></span></div><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Mon–Fri, 8:00 AM – 4:00 PM</span></div></div></div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="footer-gold-line container"></div><div class="footer-bottom-inner"><span>© 2026 Heritage Christian Academy. All rights reserved.</span><div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a></div></div></div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  // ── Auto-fill signature date ──
+  var sigDate = document.getElementById('sig-date');
+  if (sigDate) {
+    var d = new Date();
+    sigDate.value = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  }
+
+  // ── Accordion ──
+  var isMobile = window.innerWidth <= 768;
+
+  document.querySelectorAll('.apply-sec-hd').forEach(function (btn) {
+    var bodyId = btn.getAttribute('aria-controls');
+    var body = document.getElementById(bodyId);
+    if (!body) return;
+
+    // Init height for open state
+    body.style.maxHeight = body.scrollHeight + 'px';
+
+    // Collapse on mobile (except first section)
+    if (isMobile && btn.closest('.apply-section').id !== 'sec-1') {
+      btn.setAttribute('aria-expanded', 'false');
+      body.style.maxHeight = '0px';
+      body.classList.add('is-closed');
+    }
+
+    btn.addEventListener('click', function () {
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        // Close
+        body.style.maxHeight = body.scrollHeight + 'px';
+        requestAnimationFrame(function () {
+          body.style.maxHeight = '0px';
+          body.classList.add('is-closed');
+        });
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        // Open
+        body.classList.remove('is-closed');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', 'true');
+        body.addEventListener('transitionend', function onEnd() {
+          body.style.maxHeight = 'none';
+          body.removeEventListener('transitionend', onEnd);
+        });
+      }
+    });
+  });
+
+  // ── Progress bar ──
+  var sections = document.querySelectorAll('.apply-section[data-section]');
+  var progLabel = document.getElementById('prog-label');
+  var progFill = document.getElementById('prog-fill');
+  var progTrack = document.getElementById('prog-track');
+  var total = sections.length;
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var n = parseInt(entry.target.dataset.section, 10);
+          var title = entry.target.dataset.title;
+          var pct = Math.round((n / total) * 100);
+          if (progLabel) progLabel.textContent = 'Section ' + n + ' of ' + total + ' — ' + title;
+          if (progFill) progFill.style.width = pct + '%';
+          if (progTrack) progTrack.setAttribute('aria-valuenow', pct);
+        }
+      });
+    }, { threshold: 0.25 });
+    sections.forEach(function (s) { obs.observe(s); });
+  }
+
+  // ── Conditional fields ──
+  document.querySelectorAll('[data-reveals],[data-hides]').forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      if (this.dataset.reveals) {
+        var el = document.getElementById(this.dataset.reveals);
+        if (el) el.classList.add('open');
+      }
+      if (this.dataset.hides) {
+        var el2 = document.getElementById(this.dataset.hides);
+        if (el2) el2.classList.remove('open');
+      }
+    });
+  });
+
+  // ── Secondary parent toggle ──
+  var toggleP2 = document.getElementById('toggle-p2');
+  var sec2Parent = document.getElementById('sec2-parent');
+  if (toggleP2 && sec2Parent) {
+    toggleP2.addEventListener('click', function () {
+      var open = sec2Parent.classList.contains('open');
+      sec2Parent.classList.toggle('open');
+      toggleP2.textContent = open ? '+ Add Second Parent / Guardian' : '− Remove Second Parent / Guardian';
+      toggleP2.setAttribute('aria-expanded', String(!open));
+      // Re-calculate parent section max-height
+      var body = document.getElementById('sec-2-body');
+      if (body && body.style.maxHeight !== '0px') {
+        body.style.maxHeight = 'none';
+      }
+    });
+  }
+
+  // ── SOF Modal ──
+  var sofModal = document.getElementById('sof-modal');
+  function openSof(e) { e.preventDefault(); sofModal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeSof() { sofModal.classList.remove('open'); document.body.style.overflow = ''; }
+  document.querySelectorAll('.open-sof').forEach(function (a) { a.addEventListener('click', openSof); });
+  var sofClose = document.getElementById('sof-close');
+  var sofCloseBtn = document.getElementById('sof-close-btn');
+  if (sofClose) sofClose.addEventListener('click', closeSof);
+  if (sofCloseBtn) sofCloseBtn.addEventListener('click', closeSof);
+  if (sofModal) sofModal.addEventListener('click', function (e) { if (e.target === sofModal) closeSof(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && sofModal && sofModal.classList.contains('open')) closeSof(); });
+
+  // ── Form submission ──
+  var form = document.getElementById('enroll-form');
+  var successEl = document.getElementById('apply-success');
+  var submitWrap = document.getElementById('submit-wrap');
+
+  if (form) {
+    // Clear errors on input
+    form.addEventListener('input', function (e) {
+      var fld = e.target.closest('.fld');
+      if (fld) { fld.classList.remove('show-err'); e.target.classList.remove('err'); }
+    });
+    form.addEventListener('change', function (e) {
+      var item = e.target.closest('.agr-item');
+      if (item) item.classList.remove('err-border');
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var valid = true;
+      var firstErr = null;
+
+      // Text / select / textarea required
+      form.querySelectorAll('input[required], select[required], textarea[required]').forEach(function (field) {
+        if (field.type === 'radio' || field.type === 'checkbox') return;
+        var fld = field.closest('.fld');
+        if (!field.value.trim()) {
+          valid = false;
+          field.classList.add('err');
+          if (fld) { fld.classList.add('show-err'); if (!firstErr) firstErr = fld; }
+        }
+      });
+
+      // Required radio groups
+      var rGroups = {};
+      form.querySelectorAll('input[type="radio"][required]').forEach(function (r) { rGroups[r.name] = true; });
+      Object.keys(rGroups).forEach(function (name) {
+        if (!form.querySelector('input[name="' + name + '"]:checked')) {
+          valid = false;
+          var grp = form.querySelector('input[name="' + name + '"]');
+          if (grp && !firstErr) firstErr = grp.closest('.fld') || grp.parentElement;
+        }
+      });
+
+      // Required checkboxes (agreements)
+      form.querySelectorAll('input[type="checkbox"][required]').forEach(function (cb) {
+        if (!cb.checked) {
+          valid = false;
+          var item = cb.closest('.agr-item');
+          if (item) { item.classList.add('err-border'); if (!firstErr) firstErr = item; }
+        }
+      });
+
+      if (!valid) {
+        if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // Disable submit button during processing
+      var btn = document.getElementById('submit-btn');
+      if (btn) { btn.disabled = true; btn.textContent = 'Submitting…'; }
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(function () {
+        showSuccess();
+      }).catch(function () {
+        showSuccess(); // show success regardless for static demo
+      });
+    });
+  }
+
+  function showSuccess() {
+    if (form) form.style.display = 'none';
+    if (submitWrap) submitWrap.style.display = 'none';
+    if (successEl) { successEl.style.display = 'block'; successEl.focus(); }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+}());
+</script>
+</body>
+</html>

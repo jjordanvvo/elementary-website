@@ -294,6 +294,49 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
 .navbar.hero-mode.scrolled .nav-links a { color: var(--charcoal); }
 .navbar.hero-mode.scrolled .nav-links a:hover { color: var(--navy); background: rgba(44,24,16,0.05); }
 
+/* ── Nav Dropdowns ────────────────────────────────────────── */
+.has-dropdown { position: relative; }
+.nav-chevron {
+  display: inline-block; width: 10px; height: 7px;
+  vertical-align: middle; margin-left: 2px; flex-shrink: 0;
+  transition: transform 0.2s var(--ease);
+}
+.has-dropdown:hover .nav-chevron,
+.has-dropdown:focus-within .nav-chevron { transform: rotate(180deg); }
+.nav-dropdown {
+  position: absolute; top: calc(100% + 10px); left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  background: var(--white); min-width: 185px;
+  border-radius: var(--radius-sm); padding: 6px 0;
+  box-shadow: 0 8px 36px rgba(0,0,0,0.13); border: 1px solid rgba(0,0,0,0.07);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.22s var(--ease), transform 0.22s var(--ease), visibility 0.22s;
+  z-index: 200;
+}
+.nav-dropdown::before {
+  content: ''; position: absolute; top: -5px; left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 9px; height: 9px; background: var(--white);
+  border-left: 1px solid rgba(0,0,0,0.07); border-top: 1px solid rgba(0,0,0,0.07);
+}
+.has-dropdown:hover .nav-dropdown,
+.has-dropdown:focus-within .nav-dropdown {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown li a {
+  display: block !important; padding: 9px 18px !important;
+  font-size: 11px !important; letter-spacing: 1.2px !important;
+  border-radius: 0 !important; background: transparent !important;
+  color: var(--charcoal) !important; white-space: nowrap;
+}
+.nav-dropdown li a:hover { color: var(--navy) !important; background: rgba(44,24,16,0.05) !important; }
+/* Extended mobile nav stagger for additional items */
+.mobile-menu.open nav a:nth-child(9)  { transition-delay: 0.36s; }
+.mobile-menu.open nav a:nth-child(10) { transition-delay: 0.40s; }
+.mobile-menu.open nav a:nth-child(11) { transition-delay: 0.44s; }
+.mobile-menu.open nav a:nth-child(12) { transition-delay: 0.48s; }
+
 /* Nav actions */
 .nav-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .nav-info-link {

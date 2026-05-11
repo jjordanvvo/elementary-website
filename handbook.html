@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heritage Christian Academy | Student Handbook | Policies & Guidelines</title>
+  <meta name="description" content="The Heritage Christian Academy Student Handbook outlines academic expectations, grading policies, code of conduct, and all program guidelines." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M16 1 L30 6.5 L30 18 C30 25 23 30 16 32 C9 30 2 25 2 18 L2 6.5 Z' fill='%231B2A4A'/><rect x='14.5' y='9' width='3' height='15' fill='%23C8A45C' rx='1'/><rect x='9.5' y='14' width='13' height='3' fill='%23C8A45C' rx='1'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .hb-wrap { max-width: 820px; margin: 0 auto; }
+    .hb-download { text-align:center; margin-bottom: 48px; }
+    .hb-note { display:inline-block; margin-top:10px; font-size:.875rem; color:var(--gray); font-style:italic; }
+    .hb-acc { border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 12px; }
+    .hb-acc-hd {
+      width:100%; display:flex; align-items:center; justify-content:space-between;
+      padding: 20px 28px; background: var(--white); cursor:pointer;
+      font-family: var(--font-serif); font-size: 1.125rem; font-weight: 600; color: var(--navy);
+      border: none; text-align:left; transition: background 0.2s;
+    }
+    .hb-acc-hd:hover { background: var(--cream); }
+    .hb-acc-icon { width:22px; height:22px; flex-shrink:0; transition: transform 0.3s var(--ease); color: var(--gold); }
+    .hb-acc.open .hb-acc-icon { transform: rotate(45deg); }
+    .hb-acc-body { max-height:0; overflow:hidden; transition: max-height 0.4s var(--ease); background: var(--white); }
+    .hb-acc-body-inner { padding: 0 28px 28px; border-top: 1px solid var(--border); }
+    .hb-acc-body-inner p { margin-top: 18px; }
+    .hb-acc-body-inner ul { margin-top:14px; padding-left:0; display:flex; flex-direction:column; gap:8px; }
+    .hb-acc-body-inner ul li { font-size:16px; color:var(--gray); padding-left:20px; position:relative; line-height:1.75; }
+    .hb-acc-body-inner ul li::before { content:'–'; position:absolute; left:0; color:var(--gold); font-weight:700; }
+    .grade-table { width:100%; border-collapse:collapse; margin-top:20px; font-size:15px; }
+    .grade-table th { background:var(--navy); color:var(--white); padding:12px 16px; text-align:left; font-family:var(--font-sans); font-size:11px; letter-spacing:1.5px; text-transform:uppercase; }
+    .grade-table td { padding:11px 16px; border-bottom:1px solid var(--border); color:var(--charcoal); }
+    .grade-table tr:nth-child(even) td { background:var(--cream); }
+    .grade-table tr:last-child td { border-bottom:none; }
+    .hb-acc-body-inner .grade-note { margin-top:16px; font-size:14.5px; color:var(--gray); font-style:italic; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container navbar-inner">
+    <a href="index.html" class="nav-logo"><svg class="nav-logo-icon" viewBox="0 0 28 32" fill="none"><path d="M14 1L26 6.5V18C26 24.5 20.5 29.5 14 31.5C7.5 29.5 2 24.5 2 18V6.5L14 1Z" fill="#1B2A4A" stroke="#C8A45C" stroke-width="1.5"/><rect x="12.5" y="9" width="3" height="15" rx="1.5" fill="#C8A45C"/><rect x="8" y="13.5" width="12" height="3" rx="1.5" fill="#C8A45C"/></svg><div class="nav-logo-text">Heritage Christian Academy<span>Homeschool High School</span></div></a>
+    <ul class="nav-links" role="list"><li><a href="index.html">Home</a></li><li class="has-dropdown"><a href="about.html">About <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="about.html">Our Story</a></li><li><a href="team.html">Our Team</a></li><li><a href="about.html#student-life">Student Life</a></li></ul></li><li class="has-dropdown"><a href="academics.html">Academics <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="academics.html">Overview</a></li><li><a href="courses.html">Course Catalog</a></li><li><a href="academics.html#diplomas">Graduation Reqs</a></li></ul></li><li><a href="howitworks.html">How It Works</a></li><li class="has-dropdown"><a href="admissions.html">Admissions <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="admissions.html">How to Apply</a></li><li><a href="admissions.html#tuition">Tuition &amp; Fees</a></li></ul></li><li class="has-dropdown"><a href="resources.html">Resources <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="resources.html">Parent Resources</a></li><li><a href="handbook.html">Student Handbook</a></li><li><a href="resources.html#transcripts">Transcripts</a></li></ul></li><li><a href="calendar.html">Calendar</a></li><li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <div class="nav-actions"><a href="contact.html#inquiry" class="nav-info-link">Request Info</a><a href="apply.html" class="btn btn-primary btn-sm">Apply Now</a></div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog">
+  <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="team.html">Our Team</a><a href="academics.html">Academics</a><a href="courses.html">Courses</a><a href="howitworks.html">How It Works</a><a href="admissions.html">Admissions</a><a href="resources.html">Resources</a><a href="handbook.html">Handbook</a><a href="calendar.html">Calendar</a><a href="news.html">News</a><a href="contact.html">Contact</a></nav>
+  <div class="mobile-menu-apply"><a href="apply.html" class="btn btn-primary">Apply Now</a></div>
+  <button class="mobile-close" id="mobile-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+</div>
+
+<section class="page-hero body-offset">
+  <div class="page-hero-bg" style="background:linear-gradient(150deg,#3a1008 0%,#2C1810 60%,#1A0E08 100%)"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container page-hero-content">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span><a href="resources.html">Resources</a><span class="sep">/</span><span>Student Handbook</span>
+    </nav>
+    <p class="page-hero-label">Policies &amp; Guidelines</p>
+    <h1 class="page-hero-title">Student Handbook</h1>
+    <p class="page-hero-sub">Everything families need to know about expectations, policies, and guidelines at Heritage Christian Academy.</p>
+  </div>
+  <div class="page-hero-accent"></div>
+</section>
+
+<section class="section bg-white">
+  <div class="container">
+    <div class="hb-wrap">
+      <div class="hb-download fade-up">
+        <a href="javascript:void(0)" class="btn btn-outline" onclick="alert('PDF version coming soon. All handbook content is available on this page.')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Handbook (PDF)
+        </a>
+        <span class="hb-note">PDF version coming soon. All handbook content is available on this page.</span>
+      </div>
+
+      <!-- Section 1 -->
+      <div class="hb-acc fade-up">
+        <button class="hb-acc-hd" aria-expanded="false">1. Welcome<svg class="hb-acc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="hb-acc-body"><div class="hb-acc-body-inner"><p>Welcome to Heritage Christian Academy. This handbook outlines the expectations, policies, and guidelines for students and families enrolled in our program. Please read it carefully and keep it as a reference throughout the school year.</p></div></div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="hb-acc fade-up">
+        <button class="hb-acc-hd" aria-expanded="false">2. Academic Expectations<svg class="hb-acc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="hb-acc-body"><div class="hb-acc-body-inner"><ul><li>Students are expected to complete all assigned coursework by the end of each semester.</li><li>A minimum of 4 hours of academic work per day is recommended for full-time students.</li><li>Students should maintain a consistent daily schedule, though exact hours are flexible.</li><li>All work submitted must be the student's own. Academic dishonesty will result in a zero on the assignment and may lead to disciplinary action.</li><li>Students who fall more than 2 weeks behind in coursework will receive a progress alert. Continued delays may require a parent conference.</li></ul></div></div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="hb-acc fade-up">
+        <button class="hb-acc-hd" aria-expanded="false">3. Grading Scale<svg class="hb-acc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="hb-acc-body"><div class="hb-acc-body-inner">
+          <table class="grade-table">
+            <thead><tr><th>Letter Grade</th><th>Percentage</th><th>GPA Points</th></tr></thead>
+            <tbody>
+              <tr><td>A+</td><td>97–100%</td><td>4.0</td></tr>
+              <tr><td>A</td><td>93–96%</td><td>4.0</td></tr>
+              <tr><td>A–</td><td>90–92%</td><td>3.7</td></tr>
+              <tr><td>B+</td><td>87–89%</td><td>3.3</td></tr>
+              <tr><td>B</td><td>83–86%</td><td>3.0</td></tr>
+              <tr><td>B–</td><td>80–82%</td><td>2.7</td></tr>
+              <tr><td>C+</td><td>77–79%</td><td>2.3</td></tr>
+              <tr><td>C</td><td>73–76%</td><td>2.0</td></tr>
+              <tr><td>C–</td><td>70–72%</td><td>1.7</td></tr>
+              <tr><td>D+</td><td>67–69%</td><td>1.3</td></tr>
+              <tr><td>D</td><td>63–66%</td><td>1.0</td></tr>
+              <tr><td>D–</td><td>60–62%</td><td>0.7</td></tr>
+              <tr><td>F</td><td>Below 60%</td><td>0.0</td></tr>
+            </tbody>
+          </table>
+          <p class="grade-note">A minimum grade of D– (60%) is required to earn credit for a course. Students who score below 60% must retake the course or complete remediation as determined by their academic advisor.</p>
+          <p class="grade-note">GPA is calculated on an unweighted 4.0 scale.</p>
+        </div></div>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="hb-acc fade-up">
+        <button class="hb-acc-hd" aria-expanded="false">4. Progress Reporting<svg class="hb-acc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="hb-acc-body"><div class="hb-acc-body-inner"><ul><li>Progress reports are issued every 4 weeks via email to the parent/guardian on file.</li><li>Quarterly report cards are issued at the end of each 9-week grading period.</li><li>Report cards include: course name, current grade, credits earned, and teacher comments.</li><li>Parents may request a progress update at any time by contacting the academic advisor.</li><li>Parent-teacher conferences are available by appointment.</li></ul></div></div>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="hb-acc fade-up">
+        <button class="hb-acc-hd" aria-expanded="false">5. Attendance &amp; Participation<svg class="hb-acc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="hb-acc-body"><div class="hb-acc-body-inner"><ul><li>Heritage Christian Academy operates on a flexible schedule. Students are not required to log in at specific times unless enrolled in a live session.</li><li>Students are expected to complete coursework within the semester timeline.</li><li>A minimum of 170 instructional days per school year is recommended to meet most state homeschool requirements.</li><li>Extended absences or pauses must be communicated to the academic advisor in advance.</li></ul></div></div>
+      </div>
+
+      <!-- Section 6 -->
+      <div class="hb-acc fade-up">
+        <button class="hb-acc-hd" aria-expanded="false">6. Code of Conduct<svg class="hb-acc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="hb-acc-body"><div class="hb-acc-body-inner"><ul><li>Students are expected to conduct themselves with integrity, respect, and a Christ-like attitude in all interactions.</li><li>Respectful communication is required in all correspondence with staff, teachers, and fellow students.</li><li>Profanity, harassment, bullying, or discriminatory behavior will not be tolerated.</li><li>Students participating in any Heritage Christian Academy online sessions or events are expected to dress modestly and appropriately.</li><li>Violations of the code of conduct will be addressed on a case-by-case basis and may result in probation, suspension, or dismissal.</li></ul></div></div>
+      </div>
+
+      <!-- Section 7 -->
+      <div class="hb-acc fade-up">
+        <button class="hb-acc-hd" aria-expanded="false">7. Academic Integrity / Honor Code<svg class="hb-acc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="hb-acc-body"><div class="hb-acc-body-inner"><p>As Christians, we believe that honesty is a reflection of our character and our faith. Heritage Christian Academy holds all students to the following standards:</p><ul><li>All submitted work must be the student's own original work.</li><li>Plagiarism — presenting someone else's words or ideas as your own — is a serious offense.</li><li>Use of AI tools (ChatGPT, etc.) to complete assignments is prohibited unless explicitly permitted by the instructor for a specific assignment.</li><li>First offense: zero on the assignment + parent notification.</li><li>Second offense: course failure + mandatory parent conference.</li><li>Third offense: possible dismissal from the program.</li></ul></div></div>
+      </div>
+
+      <!-- Section 8 -->
+      <div class="hb-acc fade-up">
+        <button class="hb-acc-hd" aria-expanded="false">8. Communication Policy<svg class="hb-acc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="hb-acc-body"><div class="hb-acc-body-inner"><ul><li>The primary method of communication is email.</li><li>Staff respond to emails within 24 hours during business days (Monday–Friday, 8:00 AM – 4:00 PM).</li><li>Academic advisors are available by phone during office hours.</li><li>Urgent matters should be communicated by phone.</li><li>All official school communications will be sent to the parent/guardian email on file. It is the family's responsibility to keep contact information up to date.</li></ul></div></div>
+      </div>
+
+      <!-- Section 9 -->
+      <div class="hb-acc fade-up">
+        <button class="hb-acc-hd" aria-expanded="false">9. Technology Requirements<svg class="hb-acc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="hb-acc-body"><div class="hb-acc-body-inner"><ul><li>A computer or laptop (Chromebook, Mac, or PC) with reliable internet access.</li><li>Updated web browser (Chrome, Firefox, Safari, or Edge).</li><li>Minimum internet speed: 5 Mbps download.</li><li>A printer is recommended but not required.</li><li>A working email address for the student and parent/guardian.</li><li>A webcam and microphone may be required for certain assessments or live sessions.</li></ul></div></div>
+      </div>
+
+      <!-- Section 10 -->
+      <div class="hb-acc fade-up">
+        <button class="hb-acc-hd" aria-expanded="false">10. Withdrawal &amp; Refund Policy<svg class="hb-acc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="hb-acc-body"><div class="hb-acc-body-inner"><ul><li>Families may withdraw at any time by submitting a written withdrawal request to the registrar.</li><li>Withdrawal within the first 30 days of enrollment: full tuition refund minus registration fee.</li><li>Withdrawal between 31–60 days: 50% tuition refund.</li><li>Withdrawal after 60 days: no refund.</li><li>Transcripts and records will be released upon request after all financial obligations are met.</li><li>Students who withdraw mid-semester will receive grades for completed coursework only.</li></ul></div></div>
+      </div>
+
+      <!-- Section 11 -->
+      <div class="hb-acc fade-up">
+        <button class="hb-acc-hd" aria-expanded="false">11. Transfer Credit Policy<svg class="hb-acc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="hb-acc-body"><div class="hb-acc-body-inner"><ul><li>Heritage Christian Academy accepts transfer credits from accredited schools, other homeschool programs, and online academies.</li><li>Official transcripts from the previous institution are required for transfer credit evaluation.</li><li>Transfer credits are reviewed on a case-by-case basis by the academic advisor.</li><li>Credits earned at Heritage Christian Academy are transferable. Official transcripts formatted for college admissions and school transfers are available upon request.</li></ul></div></div>
+      </div>
+
+      <!-- Section 12 -->
+      <div class="hb-acc fade-up">
+        <button class="hb-acc-hd" aria-expanded="false">12. Graduation Requirements<svg class="hb-acc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="hb-acc-body"><div class="hb-acc-body-inner"><ul><li>Standard Diploma: 25.5 credits required.</li><li>College Preparatory Diploma: 28 credits required.</li><li>Bible/Theology is required every year of enrollment.</li></ul><p style="margin-top:16px">For the complete course requirements and diploma track details, see our <a href="academics.html#diplomas" style="color:var(--crimson);font-weight:600">Academics page</a>.</p></div></div>
+      </div>
+
+      <!-- Section 13 -->
+      <div class="hb-acc fade-up">
+        <button class="hb-acc-hd" aria-expanded="false">13. Privacy &amp; Student Records<svg class="hb-acc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="hb-acc-body"><div class="hb-acc-body-inner"><ul><li>Heritage Christian Academy maintains student records in compliance with applicable privacy regulations.</li><li>Student information is never shared with third parties without written parental consent, except as required by law.</li><li>Parents may request to view their student's complete records at any time.</li><li>Record retention: student records are maintained for a minimum of 7 years after the student's last date of enrollment.</li></ul><p style="margin-top:16px">For full privacy details, see our <a href="privacy.html" style="color:var(--crimson);font-weight:600">Privacy Policy</a>.</p></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-scripture-top"><blockquote>"Train up a child in the way he should go; even when he is old he will not depart from it."</blockquote><cite>— Proverbs 22:6</cite></div>
+  <div class="footer-main"><div class="container"><div class="footer-grid">
+    <div><div class="footer-logo"><svg width="28" height="32" viewBox="0 0 28 32" fill="none"><path d="M14 1L26 6.5V18C26 24.5 20.5 29.5 14 31.5C7.5 29.5 2 24.5 2 18V6.5L14 1Z" fill="#243557" stroke="#C8A45C" stroke-width="1.5"/><rect x="12.5" y="9" width="3" height="15" rx="1.5" fill="#C8A45C"/><rect x="8" y="13.5" width="12" height="3" rx="1.5" fill="#C8A45C"/></svg><div class="footer-logo-text">Heritage Christian Academy<span>Homeschool High School</span></div></div><p class="footer-tagline">Equipping minds. Anchoring hearts. Glorifying God through excellence in education.</p></div>
+    <div><h4 class="footer-heading">Quick Links</h4><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="team.html">Our Team</a></li><li><a href="academics.html">Academics</a></li><li><a href="howitworks.html">How It Works</a></li><li><a href="admissions.html">Admissions</a></li><li><a href="calendar.html">Calendar</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4 class="footer-heading">Resources</h4><ul class="footer-links"><li><a href="courses.html">Course Catalog</a></li><li><a href="resources.html">Parent Resources</a></li><li><a href="handbook.html">Student Handbook</a></li><li><a href="faq.html">FAQ</a></li><li><a href="news.html">News</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+    <div><h4 class="footer-heading">Contact Us</h4><div class="footer-contact"><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.76a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg><span><a href="tel:[PHONE NUMBER]">[PHONE NUMBER]</a></span></div><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span><a href="mailto:[EMAIL ADDRESS]">[EMAIL ADDRESS]</a></span></div><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Mon–Fri, 8:00 AM – 4:00 PM</span></div></div></div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="footer-gold-line container"></div><div class="footer-bottom-inner"><span>© 2026 Heritage Christian Academy. All rights reserved.</span><div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a></div></div></div>
+</footer>
+<script src="script.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.hb-acc-hd').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var acc = this.closest('.hb-acc');
+      var body = acc.querySelector('.hb-acc-body');
+      var isOpen = acc.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.hb-acc').forEach(function(a){
+        a.classList.remove('open');
+        a.querySelector('.hb-acc-body').style.maxHeight = '0';
+        a.querySelector('.hb-acc-hd').setAttribute('aria-expanded','false');
+      });
+      if(!isOpen){
+        acc.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        this.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
