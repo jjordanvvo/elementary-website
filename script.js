@@ -1,5 +1,5 @@
-/* ============================================================
-   HERITAGE CHRISTIAN ACADEMY — SHARED JAVASCRIPT
+﻿/* ============================================================
+   GROVE HERITAGE ACADEMY — SHARED JAVASCRIPT
    script.js
    ============================================================ */
 
@@ -47,7 +47,7 @@
     10: 'Thanksgiving Break is coming — review the holiday schedule.',
     11: 'Winter Break is almost here — enjoy time with family.',
   };
-  el.textContent = messages[month] || 'Welcome to Heritage Christian Academy!';
+  el.textContent = messages[month] || 'Welcome to Grove Heritage Academy!';
 }());
 
 /* ── Navbar: Scroll + Hero Mode + Split Nav ───────────────── */
