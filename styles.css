@@ -492,7 +492,7 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
 .hero-h1 em { font-style: italic; color: var(--gold); }
 .hero-subtitle {
   font-size: 19px; font-weight: 400; line-height: 1.4;
-  color: var(--charcoal); max-width: 600px; margin: 0 auto 20px;
+  color: var(--gray); max-width: 600px; margin: 0 auto 20px;
   opacity: 0; transform: translateY(20px);
   animation: fadeUp 0.7s var(--ease) 0.6s forwards;
 }
@@ -1498,6 +1498,18 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
   .scroll-arrow { display: none; }
   .highlights-scroll { padding: 12px 20px 28px; }
   .highlight-card-h { flex: 0 0 260px; }
+  /* Force all scroll-reveal elements visible on mobile — JS IntersectionObserver
+     is unreliable on small viewports and leaves content invisible if it fails. */
+  .fade-up, .fade-left, .fade-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .scripture-banner blockquote {
+    opacity: 1 !important;
+    letter-spacing: 0 !important;
+    transition: none !important;
+  }
 }
 
 /* 480px — mobile */
