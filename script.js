@@ -38,7 +38,7 @@
     1:  'Spring enrollment is open for new students.',
     2:  'Spring Break is just around the corner!',
     3:  'Spring semester in full swing — have you checked the calendar?',
-    4:  'Graduation season is here — congratulations, seniors!',
+    4:  'Graduation season is here! Congratulations, seniors!',
     5:  'Summer break starts soon — enrollment for fall is open.',
     6:  'Fall enrollment closes soon — apply before it\'s too late.',
     7:  'Fall semester begins this month — get ready!',

@@ -8,8 +8,8 @@
   <meta property="og:title" content="Grove Heritage Academy | Christian Homeschool High School" />
   <meta property="og:description" content="A Christ-centered homeschool high school program preparing students for college, career, and a life built on faith. Rooted in Faith. Growing in Purpose." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://groveheritageacademy.org/social-share.png" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M16 1 L30 6.5 L30 18 C30 25 23 30 16 32 C9 30 2 25 2 18 L2 6.5 Z' fill='%2314213D'/><rect x='14.5' y='9' width='3' height='15' fill='%23D4A017' rx='1'/><rect x='9.5' y='14' width='13' height='3' fill='%23D4A017' rx='1'/></svg>" />
+  <meta property="og:image" content="social-share.png" />
+  <link rel="icon" href="favicon.ico" /><link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -34,52 +34,31 @@
   }
   </script>
 </head>
-<body class="has-season-bar">
+<body>
 
 <!-- Page Load Overlay -->
 <div id="page-overlay" class="page-overlay" aria-hidden="true"></div>
 
-<!-- Seasonal Announcement Bar -->
-<div class="season-bar">
-  <div class="container">
-    <span class="season-bar-text" id="seasonal-msg">Now Enrolling for the 2026–2027 School Year</span>
-    <a href="apply.html" class="season-bar-link">Apply Today →</a>
-  </div>
-  <button class="season-bar-close" aria-label="Close announcement">×</button>
-</div>
-
 <!-- Navbar -->
-<nav class="navbar split-nav" id="navbar" data-hero-mode="true" role="navigation" aria-label="Main navigation">
+<nav class="navbar" id="navbar" data-hero-mode="true" role="navigation" aria-label="Main navigation">
   <div class="container navbar-inner">
 
-    <!-- Left nav group (hero mode only) -->
-    <ul class="nav-links nav-group nav-group--left" role="list">
+    <a href="index.html" class="nav-logo" aria-label="Grove Heritage Academy home">
+      <img src="Logo.PNG" alt="Grove Heritage Academy" class="nav-logo-img" />
+    </a>
+
+    <ul class="nav-links" role="list">
       <li><a href="index.html">Home</a></li>
       <li class="has-dropdown"><a href="about.html">About <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="about.html">Our Story</a></li><li><a href="team.html">Our Team</a></li><li><a href="about.html#student-life">Student Life</a></li><li><a href="about.html#statement-of-faith">Statement of Faith</a></li></ul></li>
       <li class="has-dropdown"><a href="academics.html">Academics <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="academics.html">Overview</a></li><li><a href="courses.html">Course Catalog</a></li><li><a href="academics.html#diplomas">Graduation Requirements</a></li><li><a href="howitworks.html">How It Works</a></li></ul></li>
       <li><a href="howitworks.html">How It Works</a></li>
+      <li class="has-dropdown"><a href="admissions.html">Admissions <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="admissions.html">How to Apply</a></li><li><a href="admissions.html#tuition">Tuition &amp; Fees</a></li></ul></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
 
-    <!-- Centered logo -->
-    <a href="index.html" class="nav-logo" aria-label="Grove Heritage Academy home">
-      <svg class="nav-logo-icon" viewBox="0 0 28 32" fill="none" aria-hidden="true">
-        <path d="M14 1L26 6.5V18C26 24.5 20.5 29.5 14 31.5C7.5 29.5 2 24.5 2 18V6.5L14 1Z" fill="#14213D" stroke="#D4A017" stroke-width="1.5"/>
-        <rect x="12.5" y="9" width="3" height="15" rx="1.5" fill="#D4A017"/>
-        <rect x="8" y="13.5" width="12" height="3" rx="1.5" fill="#D4A017"/>
-      </svg>
-      <div class="nav-logo-text">Grove Heritage Academy<span>Homeschool High School · Est. 1973</span></div>
-    </a>
-
-    <!-- Right nav group -->
-    <div class="nav-group nav-group--right">
-      <ul class="nav-links" role="list">
-        <li class="has-dropdown"><a href="admissions.html">Admissions <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="nav-dropdown"><li><a href="admissions.html">How to Apply</a></li><li><a href="admissions.html#tuition">Tuition &amp; Fees</a></li></ul></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a href="contact.html#inquiry" class="nav-info-link">Request Info</a>
-        <a href="apply.html" class="btn btn-primary btn-sm nav-apply-btn">Apply Now</a>
-      </div>
+    <div class="nav-actions">
+      <a href="contact.html#inquiry" class="nav-info-link">Request Info</a>
+      <a href="apply.html" class="btn btn-primary btn-sm nav-apply-btn">Apply Now</a>
     </div>
 
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -118,15 +97,10 @@
   <div class="hero-overlay"></div>
   <div class="hero-content-wrap">
     <div class="hero-content">
-      <div class="hero-logo-mark" aria-hidden="true">
-        <svg viewBox="0 0 28 32" fill="none" width="120" height="137">
-          <path d="M14 1L26 6.5V18C26 24.5 20.5 29.5 14 31.5C7.5 29.5 2 24.5 2 18V6.5L14 1Z" fill="#14213D" stroke="#D4A017" stroke-width="1.5"/>
-          <rect x="12.5" y="9" width="3" height="15" rx="1.5" fill="#D4A017"/>
-          <rect x="8" y="13.5" width="12" height="3" rx="1.5" fill="#D4A017"/>
-        </svg>
+      <div class="hero-logo-mark">
+        <img src="Logo.PNG" alt="Grove Heritage Academy" class="hero-logo-img" />
       </div>
-      <h1 class="hero-h1">Rooted in Faith.<br><em>Growing in Purpose.</em></h1>
-      <p class="hero-subtitle">A Christ-centered high school program preparing students for college, career, and a life built on faith.</p>
+      <p class="hero-subtitle">A Christ-centered high school preparing students for college and life.</p>
       <div class="hero-buttons">
         <a href="apply.html" class="btn btn-primary btn-lg">Apply Now</a>
         <a href="about.html" class="btn btn-outline-light btn-lg">Learn More</a>
@@ -426,12 +400,7 @@
     <div class="container footer-grid">
       <div>
         <div class="footer-logo">
-          <svg class="nav-logo-icon" width="32" height="36" viewBox="0 0 28 32" fill="none" aria-hidden="true">
-            <path d="M14 1L26 6.5V18C26 24.5 20.5 29.5 14 31.5C7.5 29.5 2 24.5 2 18V6.5L14 1Z" fill="#14213D" stroke="#D4A017" stroke-width="1.5"/>
-            <rect x="12.5" y="9" width="3" height="15" rx="1.5" fill="#D4A017"/>
-            <rect x="8" y="13.5" width="12" height="3" rx="1.5" fill="#D4A017"/>
-          </svg>
-          <div class="footer-logo-text">Grove Heritage Academy<span>Homeschool High School · Est. 1973</span></div>
+          <img src="Logo.PNG" alt="Grove Heritage Academy" class="footer-logo-img" />
         </div>
         <p class="footer-tagline">Rooted in Faith. Growing in Purpose.</p>
         <p class="footer-mission">A Christ-centered homeschool high school serving grades 9–12 in Elk Grove, CA.</p>

@@ -202,6 +202,7 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
   transition: background 0.45s var(--ease), box-shadow 0.45s var(--ease), border-color 0.45s var(--ease);
+  overflow: visible;
 }
 .navbar.scrolled {
   box-shadow: 0 2px 28px rgba(0,0,0,0.09);
@@ -227,10 +228,11 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
 /* Navbar inner — standard layout (left-logo, center-links, right-actions) */
 .navbar-inner {
   display: flex; align-items: center; justify-content: space-between;
-  height: 70px; padding: 0; gap: 16px;
+  height: 160px; padding: 10px 0; gap: 16px;
   transition: height 0.3s var(--ease);
+  overflow: visible;
 }
-.navbar.scrolled .navbar-inner { height: 58px; }
+.navbar.scrolled .navbar-inner { height: 160px; padding: 10px 0; }
 
 /* Split layout on hero mode (homepage) */
 .navbar.hero-mode.split-nav .navbar-inner {
@@ -261,6 +263,9 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
   transition: var(--transition);
 }
 .nav-logo-icon { width: 48px; height: 55px; flex-shrink: 0; }
+.nav-logo-img { height: 140px; width: auto; display: block; flex-shrink: 0; object-fit: contain; max-width: 100%; }
+.footer-logo-img { height: 240px; width: auto; display: block; object-fit: contain; max-width: 100%; }
+.hero-logo-img { height: 300px; width: auto; display: block; object-fit: contain; max-width: 100%; }
 .nav-logo-text {
   font-family: var(--font-serif); font-size: 17px; font-weight: 700;
   font-style: italic; color: var(--navy); line-height: 1.2; letter-spacing: 0.2px;
@@ -448,18 +453,16 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1800&q=85');
-  background-size: cover; background-position: center 20%;
+  background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.78)), url('./Hero image.jpeg') center/cover no-repeat;
 }
 .hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.75));
+  display: none;
 }
 .hero-content-wrap {
   position: relative; z-index: 1;
   width: 100%; display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  min-height: 100vh; padding: 140px 40px 80px;
+  min-height: 100vh; padding: 80px 40px 80px;
 }
 .hero-content { text-align: center; max-width: 760px; }
 .hero-eyebrow {
@@ -473,8 +476,8 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
   animation: fadeUp 0.7s var(--ease) 0.3s forwards;
 }
 .hero-logo-mark {
-  width: 120px; height: auto;
-  margin: 0 auto 36px;
+  width: auto; max-width: 100%;
+  margin: 0 auto 0; padding-bottom: 0;
   display: flex; align-items: center; justify-content: center;
   opacity: 0; transform: translateY(20px);
   animation: fadeUp 0.7s var(--ease) 0.3s forwards;
@@ -488,15 +491,15 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
 }
 .hero-h1 em { font-style: italic; color: var(--gold); }
 .hero-subtitle {
-  font-size: 19px; font-weight: 400; line-height: 1.9;
-  color: var(--charcoal); max-width: 600px; margin: 0 auto 48px;
+  font-size: 19px; font-weight: 400; line-height: 1.4;
+  color: var(--charcoal); max-width: 600px; margin: 0 auto 20px;
   opacity: 0; transform: translateY(20px);
-  animation: fadeUp 0.7s var(--ease) 0.9s forwards;
+  animation: fadeUp 0.7s var(--ease) 0.6s forwards;
 }
 .hero-buttons {
   display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
   opacity: 0; transform: translateY(20px);
-  animation: fadeUp 0.7s var(--ease) 1.2s forwards;
+  animation: fadeUp 0.7s var(--ease) 0.9s forwards;
 }
 .hero-scroll { display: none; }
 .hero-scroll-label {
@@ -1392,11 +1395,17 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
 .mt-16 { margin-top: 16px; }
 .mt-24 { margin-top: 24px; }
 .mt-40 { margin-top: 40px; }
-.body-offset { padding-top: 80px; }
+.body-offset { padding-top: 168px; }
 
 /* ── Responsive ───────────────────────────────────────────── */
-@media (max-width: 1100px) {
+
+/* 1200px — tablet landscape / split screen */
+@media (max-width: 1200px) {
   .container { padding: 0 28px; }
+  .section { padding: 60px 0; }
+  .section-sm { padding: 40px 0; }
+  .nav-links a { font-size: 13px; padding: 7px 9px; }
+  .hero-logo-img { height: 250px; }
   .highlights-scroll { padding: 20px 28px 40px; }
   .courses-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1418,36 +1427,50 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
   .why-stagger { grid-template-columns: 1fr; gap: 20px; }
   .why-card--high, .why-card--low { margin-top: 0; }
 }
-@media (max-width: 900px) {
-  .section { padding: 72px 0; }
-  .section-sm { padding: 48px 0; }
+
+/* 992px — small tablet / narrow split screen */
+@media (max-width: 992px) {
+  .section { padding: 56px 0; }
+  .section-sm { padding: 36px 0; }
+  h2 { font-size: clamp(22px, 3vw, 36px); }
+  h3 { font-size: clamp(18px, 2.2vw, 22px); }
+  .hero-logo-img { height: 200px; }
   .testimonials-grid { grid-template-columns: 1fr; }
   .two-col { grid-template-columns: 1fr; gap: 40px; }
   .pricing-grid { grid-template-columns: 1fr; }
   .pricing-card.featured { transform: none; }
   .diploma-tracks { grid-template-columns: 1fr; }
   .values-grid { grid-template-columns: 1fr; }
-  .nav-links, .nav-info-link, .nav-group { display: none; }
-  .navbar.hero-mode.split-nav .nav-group--left,
-  .navbar.hero-mode.split-nav .nav-group--right { display: none; }
-  .navbar.scrolled.split-nav .navbar-inner { grid-template-columns: auto 1fr; }
-  .navbar.scrolled.split-nav .nav-actions { display: none; }
+  .why-card, .value-card, .course-card { padding: 24px; }
+  .nav-links, .nav-info-link, .nav-actions { display: none; }
+  .nav-group { display: none; }
   .hamburger { display: flex; }
-  .nav-actions .btn { display: none; }
+  .navbar-inner { height: 100px; padding: 6px 0; }
+  .navbar.scrolled .navbar-inner { height: 100px; padding: 6px 0; }
+  .nav-logo-img { height: 86px; }
+  .body-offset { padding-top: 110px; }
 }
-@media (max-width: 640px) {
+
+/* 768px — tablet portrait */
+@media (max-width: 768px) {
   .container { padding: 0 20px; }
-  .section { padding: 56px 0; }
-  .section-sm { padding: 40px 0; }
-  .hero-content-wrap { padding: 120px 20px 80px; }
-  .page-hero { min-height: 340px; }
-  .page-hero-content { padding-top: 110px; }
+  .section { padding: 48px 0; }
+  .section-sm { padding: 32px 0; }
+  .hero-content-wrap { padding: 100px 20px 100px; }
+  .hero-logo-img { height: 160px; }
+  .nav-logo-img { height: 80px; }
+  .navbar-inner { height: 90px; padding: 5px 0; }
+  .navbar.scrolled .navbar-inner { height: 90px; padding: 5px 0; }
+  .body-offset { padding-top: 95px; }
+  .page-hero { min-height: 320px; }
+  .page-hero-content { padding-top: 100px; }
   .hero-buttons { flex-direction: column; align-items: center; }
+  .footer-logo-img { height: 140px; }
   .form-grid { grid-template-columns: 1fr; }
   .form-grid-2 { grid-template-columns: 1fr; }
   .form-grid-3 { grid-template-columns: 1fr; }
-  .form-card { padding: 28px 20px; }
-  .form-card-wide { padding: 28px 20px; }
+  .form-card { padding: 24px 20px; }
+  .form-card-wide { padding: 24px 20px; }
   .courses-grid { grid-template-columns: 1fr; }
   .steps-grid { grid-template-columns: 1fr; }
   .step-connector { display: none; }
@@ -1474,18 +1497,30 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
   .floating-apply { display: block; }
   .scroll-arrow { display: none; }
   .highlights-scroll { padding: 12px 20px 28px; }
-  .highlight-card-h { flex: 0 0 280px; }
+  .highlight-card-h { flex: 0 0 260px; }
 }
 
+/* 480px — mobile */
 @media (max-width: 480px) {
-  .hero-h1 { font-size: 34px; color: var(--navy); }
-  .hero-subtitle { font-size: 16px; color: var(--charcoal); }
+  .container { padding: 0 16px; }
+  .section { padding: 40px 0; }
+  .section-sm { padding: 28px 0; }
+  .hero-content-wrap { padding: 85px 16px 85px; }
+  .hero-logo-img { height: 120px; }
+  .nav-logo-img { height: 68px; }
+  .navbar-inner { height: 80px; padding: 5px 0; }
+  .navbar.scrolled .navbar-inner { height: 80px; padding: 5px 0; }
+  .body-offset { padding-top: 85px; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 20px; }
+  body, p { font-size: 16px; }
+  .hero-subtitle { font-size: 16px; }
   .hero-buttons { flex-direction: column; align-items: center; }
   .hero-buttons .btn { width: 100%; max-width: 300px; min-height: 48px; }
   .btn { min-height: 48px; }
-  .section { padding: 52px 0; }
-  .container { padding: 0 20px; }
-  h2 { font-size: 26px; }
+  .footer-logo-img { height: 110px; }
+  .page-hero-content { padding-top: 90px; }
 }
 
 /* ── Uniform Card System ──────────────────────────────────── */
