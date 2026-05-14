@@ -6,7 +6,9 @@
       "Bash(git *)",
       "PowerShell(Rename-Item *)",
       "Bash(Start-Process *)",
-      "PowerShell(Start-Process \"C:\\\\Users\\\\silly\\\\Desktop\\\\elementary-website\\\\apply.html\")"
+      "PowerShell(Start-Process \"C:\\\\Users\\\\silly\\\\Desktop\\\\elementary-website\\\\apply.html\")",
+      "Bash(grep -rn \"Est.*2026\\\\|foundingDate.*2026\" *.html *.svg)",
+      "Bash(echo \"EXIT:$?\")"
     ]
   }
 }
