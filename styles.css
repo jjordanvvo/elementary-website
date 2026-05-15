@@ -1442,13 +1442,22 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
   .diploma-tracks { grid-template-columns: 1fr; }
   .values-grid { grid-template-columns: 1fr; }
   .why-card, .value-card, .course-card { padding: 24px; }
-  .nav-links, .nav-info-link, .nav-actions { display: none; }
+  .nav-links, .nav-info-link { display: none; }
   .nav-group { display: none; }
-  .hamburger { display: flex; }
-  .navbar-inner { height: 100px; padding: 6px 0; }
-  .navbar.scrolled .navbar-inner { height: 100px; padding: 6px 0; }
-  .nav-logo-img { height: 86px; }
-  .body-offset { padding-top: 110px; }
+  /* Apply Now visible in mobile navbar — push it to the right side */
+  .nav-actions { display: flex; align-items: center; margin-left: auto; }
+  .nav-apply-btn { font-size: 12px !important; padding: 8px 14px !important; min-height: 0 !important; }
+  /* Hamburger: bigger tap target, wider lines, shifted left from edge */
+  .hamburger { display: flex; width: 48px; height: 48px; gap: 6px; margin-right: 10px; }
+  .hamburger span { width: 30px; }
+  .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  .navbar-inner { height: 110px; padding: 6px 0; }
+  .navbar.scrolled .navbar-inner { height: 110px; padding: 6px 0; }
+  /* Logo: slightly taller, shifted right */
+  .nav-logo-img { height: 90px; }
+  .nav-logo { margin-left: 10px; }
+  .body-offset { padding-top: 115px; }
 }
 
 /* 768px — tablet portrait */
@@ -1456,14 +1465,15 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
   .container { padding: 0 20px; }
   .section { padding: 48px 0; }
   .section-sm { padding: 32px 0; }
-  .hero-content-wrap { padding: 100px 20px 100px; }
+  .hero-content-wrap { padding: 118px 20px 100px; }
   .hero-logo-img { height: 160px; }
-  .nav-logo-img { height: 80px; }
-  .navbar-inner { height: 90px; padding: 5px 0; }
-  .navbar.scrolled .navbar-inner { height: 90px; padding: 5px 0; }
-  .body-offset { padding-top: 95px; }
+  .nav-logo-img { height: 90px; }
+  .nav-logo { margin-left: 10px; }
+  .navbar-inner { height: 106px; padding: 5px 0; }
+  .navbar.scrolled .navbar-inner { height: 106px; padding: 5px 0; }
+  .body-offset { padding-top: 112px; }
   .page-hero { min-height: 320px; }
-  .page-hero-content { padding-top: 100px; }
+  .page-hero-content { padding-top: 114px; }
   .hero-buttons { flex-direction: column; align-items: center; }
   .footer-logo-img { height: 140px; }
   .form-grid { grid-template-columns: 1fr; }
@@ -1517,12 +1527,14 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
   .container { padding: 0 16px; }
   .section { padding: 40px 0; }
   .section-sm { padding: 28px 0; }
-  .hero-content-wrap { padding: 85px 16px 85px; }
+  .hero-content-wrap { padding: 98px 16px 85px; }
   .hero-logo-img { height: 120px; }
-  .nav-logo-img { height: 68px; }
-  .navbar-inner { height: 80px; padding: 5px 0; }
-  .navbar.scrolled .navbar-inner { height: 80px; padding: 5px 0; }
-  .body-offset { padding-top: 85px; }
+  .nav-logo-img { height: 76px; }
+  .nav-logo { margin-left: 10px; }
+  .navbar-inner { height: 90px; padding: 5px 0; }
+  .navbar.scrolled .navbar-inner { height: 90px; padding: 5px 0; }
+  .nav-apply-btn { font-size: 11px !important; padding: 7px 12px !important; }
+  .body-offset { padding-top: 96px; }
   h1 { font-size: 28px; }
   h2 { font-size: 24px; }
   h3 { font-size: 20px; }
@@ -1531,8 +1543,9 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
   .hero-buttons { flex-direction: column; align-items: center; }
   .hero-buttons .btn { width: 100%; max-width: 300px; min-height: 48px; }
   .btn { min-height: 48px; }
+  .nav-apply-btn { min-height: 0 !important; }
   .footer-logo-img { height: 110px; }
-  .page-hero-content { padding-top: 90px; }
+  .page-hero-content { padding-top: 98px; }
 }
 
 /* ── Uniform Card System ──────────────────────────────────── */
