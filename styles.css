@@ -392,7 +392,8 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
 .mobile-menu {
   position: fixed; inset: 0; z-index: 999;
   background: var(--white);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  overflow-y: auto;
   opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity 0.35s var(--ease), visibility 0.35s var(--ease);
 }
@@ -1448,6 +1449,9 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
   .nav-logo-img { height: 90px; }
   .nav-logo { margin-left: 10px; }
   .body-offset { padding-top: 115px; }
+  /* Mobile menu: push content below the 110px navbar */
+  .mobile-menu { padding-top: 134px; }
+  .mobile-close { top: 114px; }
 }
 
 /* 768px — tablet portrait */
@@ -1497,6 +1501,9 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
   .scroll-arrow { display: none; }
   .highlights-scroll { padding: 12px 20px 28px; }
   .highlight-card-h { flex: 0 0 260px; }
+  /* Mobile menu: push content below the 106px navbar */
+  .mobile-menu { padding-top: 130px; }
+  .mobile-close { top: 110px; }
   /* Force all scroll-reveal elements visible on mobile — JS IntersectionObserver
      is unreliable on small viewports and leaves content invisible if it fails. */
   .fade-up, .fade-left, .fade-right {
@@ -1524,6 +1531,9 @@ body.has-season-bar .hero-content-wrap { padding-top: 180px; }
   .navbar.scrolled .navbar-inner { height: 104px; padding: 5px 0; }
   .nav-apply-btn { font-size: 11px !important; padding: 7px 12px !important; }
   .body-offset { padding-top: 110px; }
+  /* Mobile menu: push content below the 104px navbar */
+  .mobile-menu { padding-top: 128px; }
+  .mobile-close { top: 108px; }
   h1 { font-size: 28px; }
   h2 { font-size: 24px; }
   h3 { font-size: 20px; }
