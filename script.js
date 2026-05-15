@@ -250,26 +250,6 @@
   updateArrows();
 }());
 
-/* ── Floating Apply Bar (Mobile) ──────────────────────────── */
-(function () {
-  const bar = document.getElementById('float-apply');
-  if (!bar) return;
-
-  const hero = document.querySelector('.hero');
-  if (!hero) { bar.classList.add('visible'); return; }
-
-  function updateBar() {
-    const heroBottom = hero.getBoundingClientRect().bottom;
-    if (heroBottom < 0) {
-      bar.classList.add('visible');
-    } else {
-      bar.classList.remove('visible');
-    }
-  }
-
-  window.addEventListener('scroll', updateBar, { passive: true });
-  updateBar();
-}());
 
 /* ── FAQ Accordion ────────────────────────────────────────── */
 (function () {
